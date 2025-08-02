@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad - SapiSabe</title>
+    <title data-key="privacy.title">Política de Privacidad - SapiSabe</title>
     <base href="/">
-    <meta name="description" content="Política de Privacidad de SapiSabe - Cómo protegemos y utilizamos la información de nuestros usuarios y sus familias.">
+    <meta name="description" content="Política de Privacidad de SapiSabe - Cómo protegemos y utilizamos la información de nuestros usuarios y sus familias." data-key="privacy.metaDescription">
     <meta name="robots" content="noindex, nofollow">
     
     <!-- Favicon -->
@@ -16,6 +16,83 @@
     <!-- External Resources -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Language Selector Styles -->
+    <style>
+        .language-selector {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .current-language {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--bg-glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .current-language:hover {
+            background: var(--bg-glass-hover);
+            color: var(--text-primary);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 8px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 8px;
+            min-width: 120px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: var(--shadow-glass);
+        }
+
+        .language-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .language-option:hover {
+            background: var(--bg-glass-hover);
+            color: var(--text-primary);
+        }
+
+        .language-option.active {
+            background: var(--gradient-primary);
+            color: white;
+        }
+    </style>
     <style>
         * {
             margin: 0;
@@ -244,9 +321,35 @@
                     <img src="assets/sapi.webp" alt="SapiSabe Logo">
                     <span class="logo-text">SapiSabe</span>
                 </a>
-                <a href="index.html" class="back-btn">
-                    <i class="fas fa-arrow-left"></i> Volver al Inicio
-                </a>
+                
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <div class="current-language" id="currentLanguage">
+                            <span class="flag">🇪🇸</span>
+                            <span class="lang-text">ES</span>
+                            <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+                        </div>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option" data-lang="es">
+                                <span class="flag">🇪🇸</span>
+                                <span>Español</span>
+                            </div>
+                            <div class="language-option" data-lang="en">
+                                <span class="flag">🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                            <div class="language-option" data-lang="fr">
+                                <span class="flag">🇫🇷</span>
+                                <span>Français</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="index.html" class="back-btn" data-key="nav.backToSite">
+                        <i class="fas fa-arrow-left"></i> Volver al Inicio
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -255,205 +358,260 @@
     <main class="main-content">
         <div class="container">
             <div class="legal-container">
-                <h1 class="legal-title">Política de Privacidad</h1>
-                <p class="legal-subtitle">Última actualización: Agosto 2025</p>
+                <h1 class="legal-title" data-key="privacy.pageTitle">Política de Privacidad</h1>
+                <p class="legal-subtitle" data-key="privacy.lastUpdated">Última actualización: 15 de enero de 2024</p>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="introduction">
+                    <h2 class="section-title" data-key="privacy.sections.introduction.title">
                         <i class="fas fa-shield-alt"></i>
-                        Información General
+                        Introducción
                     </h2>
                     <div class="section-content">
-                        <p>En SapiSabe, nos tomamos muy en serio la privacidad de nuestros usuarios, especialmente la de los niños. Esta Política de Privacidad describe cómo recopilamos, utilizamos y protegemos la información personal que obtenemos a través de nuestra aplicación móvil SapiSabe.</p>
-                        
-                        <div class="highlight">
-                            <strong>Compromiso con la Privacidad Infantil:</strong> Cumplimos estrictamente con las leyes de protección de datos infantiles, incluyendo COPPA (Children's Online Privacy Protection Act) y GDPR.
-                        </div>
+                        <p data-key="privacy.sections.introduction.content">En SapiSabe, entendemos la importancia de proteger la privacidad de las familias, especialmente cuando se trata de niños. Esta política explica cómo recopilamos, utilizamos y protegemos tu información personal y la de tus hijos cuando utilizas nuestra aplicación de aprendizaje con inteligencia artificial.</p>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="dataCollection">
+                    <h2 class="section-title" data-key="privacy.sections.dataCollection.title">
                         <i class="fas fa-camera"></i>
                         Información que Recopilamos
                     </h2>
                     <div class="section-content">
-                        <h3>Información del Usuario:</h3>
+                        <h3 data-key="privacy.sections.dataCollection.userInfo">Información del Usuario:</h3>
                         <ul>
-                            <li><strong>Información de registro:</strong> Email, nombre completo (solo para padres)</li>
-                            <li><strong>Perfiles infantiles:</strong> Nombre, edad, preferencias de aprendizaje</li>
-                            <li><strong>Fotografías:</strong> Imágenes capturadas para análisis con IA</li>
-                            <li><strong>Datos de uso:</strong> Historial de análisis, preferencias de la app</li>
+                            <li data-key="privacy.sections.dataCollection.userInfoItems.0"><strong>Información de registro:</strong> Email, nombre completo (solo para padres)</li>
+                            <li data-key="privacy.sections.dataCollection.userInfoItems.1"><strong>Perfiles infantiles:</strong> Nombre, edad, preferencias de aprendizaje</li>
+                            <li data-key="privacy.sections.dataCollection.userInfoItems.2"><strong>Fotografías:</strong> Imágenes capturadas para análisis con IA</li>
+                            <li data-key="privacy.sections.dataCollection.userInfoItems.3"><strong>Datos de uso:</strong> Historial de análisis, preferencias de la app</li>
                         </ul>
 
-                        <h3>Información Técnica:</h3>
+                        <h3 data-key="privacy.sections.dataCollection.technicalInfo">Información Técnica:</h3>
                         <ul>
-                            <li><strong>Dispositivo:</strong> Tipo de dispositivo, sistema operativo, versión de la app</li>
-                            <li><strong>Uso de la app:</strong> Funciones utilizadas, tiempo de uso, errores</li>
-                            <li><strong>Conectividad:</strong> Estado de conexión, calidad de red</li>
+                            <li data-key="privacy.sections.dataCollection.technicalInfoItems.0"><strong>Dispositivo:</strong> Tipo de dispositivo, sistema operativo, versión de la app</li>
+                            <li data-key="privacy.sections.dataCollection.technicalInfoItems.1"><strong>Uso de la app:</strong> Funciones utilizadas, tiempo de uso, errores</li>
+                            <li data-key="privacy.sections.dataCollection.technicalInfoItems.2"><strong>Conectividad:</strong> Estado de conexión, calidad de red</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="dataUsage">
+                    <h2 class="section-title" data-key="privacy.sections.dataUsage.title">
                         <i class="fas fa-cogs"></i>
                         Cómo Utilizamos la Información
                     </h2>
                     <div class="section-content">
-                        <h3>Para Proporcionar el Servicio:</h3>
+                        <h3 data-key="privacy.sections.dataUsage.serviceUsage">Para Proporcionar el Servicio:</h3>
                         <ul>
-                            <li>Análisis de imágenes con OpenAI Vision para identificar objetos y lugares</li>
-                            <li>Personalización de respuestas según la edad del niño</li>
-                            <li>Gestión de perfiles familiares y historial de análisis</li>
-                            <li>Mejora continua de la experiencia de usuario</li>
+                            <li data-key="privacy.sections.dataUsage.serviceUsageItems.0">Análisis de imágenes con OpenAI Vision para identificar objetos y lugares</li>
+                            <li data-key="privacy.sections.dataUsage.serviceUsageItems.1">Personalización de respuestas según la edad del niño</li>
+                            <li data-key="privacy.sections.dataUsage.serviceUsageItems.2">Gestión de perfiles familiares y historial de análisis</li>
+                            <li data-key="privacy.sections.dataUsage.serviceUsageItems.3">Mejora continua de la experiencia de usuario</li>
                         </ul>
 
-                        <h3>Para la Seguridad:</h3>
+                        <h3 data-key="privacy.sections.dataUsage.security">Para la Seguridad:</h3>
                         <ul>
-                            <li>Detección y prevención de uso fraudulento</li>
-                            <li>Protección contra spam y contenido inapropiado</li>
-                            <li>Mantenimiento de la integridad de la plataforma</li>
+                            <li data-key="privacy.sections.dataUsage.securityItems.0">Detección y prevención de uso fraudulento</li>
+                            <li data-key="privacy.sections.dataUsage.securityItems.1">Protección contra spam y contenido inapropiado</li>
+                            <li data-key="privacy.sections.dataUsage.securityItems.2">Mantenimiento de la integridad de la plataforma</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="dataSharing">
+                    <h2 class="section-title" data-key="privacy.sections.dataSharing.title">
                         <i class="fas fa-share-alt"></i>
                         Compartir Información
                     </h2>
                     <div class="section-content">
-                        <p><strong>No vendemos, alquilamos ni compartimos información personal con terceros con fines comerciales.</strong></p>
+                        <p data-key="privacy.sections.dataSharing.noSelling"><strong>No vendemos, alquilamos ni compartimos información personal con terceros con fines comerciales.</strong></p>
                         
-                        <h3>Compartimos información solo en estos casos:</h3>
+                        <h3 data-key="privacy.sections.dataSharing.sharingCases">Compartimos información solo en estos casos:</h3>
                         <ul>
-                            <li><strong>Proveedores de servicios:</strong> OpenAI (análisis de imágenes), Supabase (almacenamiento)</li>
-                            <li><strong>Cumplimiento legal:</strong> Cuando lo requiera la ley o autoridades competentes</li>
-                            <li><strong>Seguridad:</strong> Para proteger nuestros derechos, propiedad o seguridad</li>
+                            <li data-key="privacy.sections.dataSharing.sharingItems.0"><strong>Proveedores de servicios:</strong> OpenAI (análisis de imágenes), Supabase (almacenamiento)</li>
+                            <li data-key="privacy.sections.dataSharing.sharingItems.1"><strong>Cumplimiento legal:</strong> Cuando lo requiera la ley o autoridades competentes</li>
+                            <li data-key="privacy.sections.dataSharing.sharingItems.2"><strong>Seguridad:</strong> Para proteger nuestros derechos, propiedad o seguridad</li>
                         </ul>
 
                         <div class="highlight">
-                            <strong>Protección Especial para Niños:</strong> Nunca compartimos información personal de niños con terceros sin consentimiento parental explícito.
+                            <strong data-key="privacy.sections.dataSharing.childrenProtection">Protección Especial para Niños:</strong> Nunca compartimos información personal de niños con terceros sin consentimiento parental explícito.
                         </div>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="dataSecurity">
+                    <h2 class="section-title" data-key="privacy.sections.dataSecurity.title">
                         <i class="fas fa-lock"></i>
                         Seguridad de Datos
                     </h2>
                     <div class="section-content">
-                        <h3>Medidas de Seguridad Implementadas:</h3>
+                        <h3 data-key="privacy.sections.dataSecurity.measures">Medidas de Seguridad Implementadas:</h3>
                         <ul>
-                            <li><strong>Cifrado:</strong> Todos los datos se transmiten y almacenan cifrados</li>
-                            <li><strong>Acceso restringido:</strong> Solo personal autorizado puede acceder a datos personales</li>
-                            <li><strong>Auditorías regulares:</strong> Revisamos periódicamente nuestras medidas de seguridad</li>
-                            <li><strong>Backups seguros:</strong> Copias de seguridad encriptadas</li>
+                            <li data-key="privacy.sections.dataSecurity.measureItems.0"><strong>Cifrado:</strong> Todos los datos se transmiten y almacenan cifrados</li>
+                            <li data-key="privacy.sections.dataSecurity.measureItems.1"><strong>Acceso restringido:</strong> Solo personal autorizado puede acceder a datos personales</li>
+                            <li data-key="privacy.sections.dataSecurity.measureItems.2"><strong>Auditorías regulares:</strong> Revisamos periódicamente nuestras medidas de seguridad</li>
+                            <li data-key="privacy.sections.dataSecurity.measureItems.3"><strong>Backups seguros:</strong> Copias de seguridad encriptadas</li>
                         </ul>
 
-                        <p>A pesar de nuestras medidas de seguridad, ningún sistema es 100% seguro. Te notificaremos inmediatamente si detectamos cualquier violación de seguridad que pueda afectar tu información personal.</p>
+                        <p data-key="privacy.sections.dataSecurity.disclaimer">A pesar de nuestras medidas de seguridad, ningún sistema es 100% seguro. Te notificaremos inmediatamente si detectamos cualquier violación de seguridad que pueda afectar tu información personal.</p>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="dataRetention">
+                    <h2 class="section-title" data-key="privacy.sections.dataRetention.title">
                         <i class="fas fa-calendar-alt"></i>
                         Retención de Datos
                     </h2>
                     <div class="section-content">
-                        <h3>Períodos de Retención:</h3>
+                        <h3 data-key="privacy.sections.dataRetention.periods">Períodos de Retención:</h3>
                         <ul>
-                            <li><strong>Datos de cuenta:</strong> Mientras mantengas tu cuenta activa</li>
-                            <li><strong>Fotografías:</strong> 30 días después del análisis (para mejorar el servicio)</li>
-                            <li><strong>Datos de uso:</strong> 2 años para análisis y mejoras</li>
-                            <li><strong>Datos de facturación:</strong> Según requerimientos legales (7 años)</li>
+                            <li data-key="privacy.sections.dataRetention.periodItems.0"><strong>Datos de cuenta:</strong> Mientras mantengas tu cuenta activa</li>
+                            <li data-key="privacy.sections.dataRetention.periodItems.1"><strong>Fotografías:</strong> 30 días después del análisis (para mejorar el servicio)</li>
+                            <li data-key="privacy.sections.dataRetention.periodItems.2"><strong>Datos de uso:</strong> 2 años para análisis y mejoras</li>
+                            <li data-key="privacy.sections.dataRetention.periodItems.3"><strong>Datos de facturación:</strong> Según requerimientos legales (7 años)</li>
                         </ul>
 
-                        <p>Puedes solicitar la eliminación de tus datos en cualquier momento a través de la configuración de la app o contactándonos directamente.</p>
+                        <p data-key="privacy.sections.dataRetention.deletion">Puedes solicitar la eliminación de tus datos en cualquier momento a través de la configuración de la app o contactándonos directamente.</p>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="internationalTransfers">
+                    <h2 class="section-title" data-key="privacy.sections.internationalTransfers.title">
                         <i class="fas fa-globe"></i>
                         Transferencias Internacionales
                     </h2>
                     <div class="section-content">
-                        <p>Nuestros servicios utilizan proveedores ubicados en diferentes países. Todas las transferencias internacionales de datos se realizan con las garantías adecuadas según el GDPR y otras leyes aplicables.</p>
+                        <p data-key="privacy.sections.internationalTransfers.content">Nuestros servicios utilizan proveedores ubicados en diferentes países. Todas las transferencias internacionales de datos se realizan con las garantías adecuadas según el GDPR y otras leyes aplicables.</p>
                         
-                        <h3>Proveedores Principales:</h3>
+                        <h3 data-key="privacy.sections.internationalTransfers.providers">Proveedores Principales:</h3>
                         <ul>
-                            <li><strong>OpenAI:</strong> Estados Unidos (análisis de imágenes)</li>
-                            <li><strong>Supabase:</strong> Unión Europea (almacenamiento de datos)</li>
-                            <li><strong>Servicios de hosting:</strong> Varias ubicaciones para optimizar rendimiento</li>
+                            <li data-key="privacy.sections.internationalTransfers.providerItems.0"><strong>OpenAI:</strong> Estados Unidos (análisis de imágenes)</li>
+                            <li data-key="privacy.sections.internationalTransfers.providerItems.1"><strong>Supabase:</strong> Unión Europea (almacenamiento de datos)</li>
+                            <li data-key="privacy.sections.internationalTransfers.providerItems.2"><strong>Servicios de hosting:</strong> Varias ubicaciones para optimizar rendimiento</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="rights">
+                    <h2 class="section-title" data-key="privacy.sections.rights.title">
                         <i class="fas fa-user-shield"></i>
                         Tus Derechos
                     </h2>
                     <div class="section-content">
-                        <h3>Derechos que Tienes:</h3>
+                        <h3 data-key="privacy.sections.rights.description">Derechos que Tienes:</h3>
                         <ul>
-                            <li><strong>Acceso:</strong> Solicitar información sobre los datos que tenemos sobre ti</li>
-                            <li><strong>Rectificación:</strong> Corregir datos inexactos o incompletos</li>
-                            <li><strong>Eliminación:</strong> Solicitar la eliminación de tus datos personales</li>
-                            <li><strong>Portabilidad:</strong> Recibir tus datos en formato estructurado</li>
-                            <li><strong>Oposición:</strong> Oponerte al procesamiento de tus datos</li>
-                            <li><strong>Limitación:</strong> Limitar el procesamiento de tus datos</li>
+                            <li data-key="privacy.sections.rights.rightItems.0"><strong>Acceso:</strong> Solicitar información sobre los datos que tenemos sobre ti</li>
+                            <li data-key="privacy.sections.rights.rightItems.1"><strong>Rectificación:</strong> Corregir datos inexactos o incompletos</li>
+                            <li data-key="privacy.sections.rights.rightItems.2"><strong>Eliminación:</strong> Solicitar la eliminación de tus datos personales</li>
+                            <li data-key="privacy.sections.rights.rightItems.3"><strong>Portabilidad:</strong> Recibir tus datos en formato estructurado</li>
+                            <li data-key="privacy.sections.rights.rightItems.4"><strong>Oposición:</strong> Oponerte al procesamiento de tus datos</li>
                         </ul>
 
-                        <p>Para ejercer estos derechos, contacta con nosotros a través de los medios indicados al final de esta política.</p>
+                        <p data-key="privacy.sections.rights.exerciseRights">Para ejercer estos derechos, contacta con nosotros a través de los medios indicados al final de esta política.</p>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="cookies">
+                    <h2 class="section-title" data-key="privacy.sections.cookies.title">
                         <i class="fas fa-cookie-bite"></i>
                         Cookies y Tecnologías Similares
                     </h2>
                     <div class="section-content">
-                        <p>Nuestra aplicación móvil puede utilizar tecnologías similares a las cookies para mejorar la experiencia del usuario y analizar el uso de la aplicación.</p>
+                        <p data-key="privacy.sections.cookies.content">Nuestra aplicación móvil puede utilizar tecnologías similares a las cookies para mejorar la experiencia del usuario y analizar el uso de la aplicación.</p>
                         
-                        <h3>Tipos de Tecnologías Utilizadas:</h3>
+                        <h3 data-key="privacy.sections.cookies.types">Tipos de Tecnologías Utilizadas:</h3>
                         <ul>
-                            <li><strong>Almacenamiento local:</strong> Para guardar preferencias y datos de sesión</li>
-                            <li><strong>Analytics:</strong> Para entender cómo se usa la aplicación</li>
-                            <li><strong>Publicidad:</strong> Para mostrar contenido relevante (solo en versión gratuita)</li>
+                            <li data-key="privacy.sections.cookies.typeItems.0"><strong>Almacenamiento local:</strong> Para guardar preferencias y datos de sesión</li>
+                            <li data-key="privacy.sections.cookies.typeItems.1"><strong>Analytics:</strong> Para entender cómo se usa la aplicación</li>
+                            <li data-key="privacy.sections.cookies.typeItems.2"><strong>Publicidad:</strong> Para mostrar contenido relevante (solo en versión gratuita)</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="changes">
+                    <h2 class="section-title" data-key="privacy.sections.changes.title">
                         <i class="fas fa-bell"></i>
                         Cambios en esta Política
                     </h2>
                     <div class="section-content">
-                        <p>Podemos actualizar esta Política de Privacidad ocasionalmente. Te notificaremos sobre cambios significativos a través de:</p>
+                        <p data-key="privacy.sections.changes.content">Podemos actualizar esta Política de Privacidad ocasionalmente. Te notificaremos sobre cambios significativos a través de:</p>
                         <ul>
-                            <li>Notificación en la aplicación</li>
-                            <li>Email a la dirección registrada</li>
-                            <li>Actualización de la fecha en esta página</li>
+                            <li data-key="privacy.sections.changes.methods.0">Notificación en la aplicación</li>
+                            <li data-key="privacy.sections.changes.methods.1">Email a la dirección registrada</li>
+                            <li data-key="privacy.sections.changes.methods.2">Actualización de la fecha en esta página</li>
                         </ul>
                         
-                        <p>Te recomendamos revisar esta política periódicamente para mantenerte informado sobre cómo protegemos tu información.</p>
+                        <p data-key="privacy.sections.changes.recommendation">Te recomendamos revisar esta política periódicamente para mantenerte informado sobre cómo protegemos tu información.</p>
                     </div>
                 </div>
 
                 <div class="contact-info">
-                    <h3><i class="fas fa-envelope"></i> Contacto</h3>
-                    <p><strong>Email:</strong> privacy@sapisabe.com</p>
-                    <p><strong>Asunto:</strong> Consulta sobre Política de Privacidad</p>
-                    <p><strong>Tiempo de respuesta:</strong> 48 horas hábiles</p>
+                    <h3 data-key="privacy.sections.contact.title"><i class="fas fa-envelope"></i> Contacto</h3>
+                    <p data-key="privacy.sections.contact.email"><strong>Email:</strong> privacy@sapisabe.com</p>
+                    <p data-key="privacy.sections.contact.subject"><strong>Asunto:</strong> Consulta sobre Política de Privacidad</p>
+                    <p data-key="privacy.sections.contact.response"><strong>Tiempo de respuesta:</strong> 48 horas hábiles</p>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- Include legal translations -->
+    <script src="js/legal-translations.js"></script>
+    
+    <script>
+        // Función para traducir usando las claves de datos
+        function translateContent() {
+            const lang = getCurrentLanguageLegal();
+            const t = legalTranslations[lang];
+            
+            if (!t || !t.privacy) return;
+            
+            // Actualizar meta tags
+            document.title = t.privacy.title;
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) metaDescription.setAttribute('content', t.privacy.metaDescription);
+            
+            // Traducir elementos con data-key
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                const translation = getNestedTranslation(t, key);
+                if (translation) {
+                    if (element.tagName === 'TITLE' || element.tagName === 'META') {
+                        // Ya manejado arriba
+                        return;
+                    }
+                    element.textContent = translation;
+                }
+            });
+            
+            // Actualizar idioma HTML
+            document.documentElement.lang = lang;
+        }
+        
+        function getNestedTranslation(obj, path) {
+            return path.split('.').reduce((current, key) => {
+                if (current && typeof current === 'object') {
+                    // Manejar arrays con índices
+                    if (!isNaN(key)) {
+                        return current[parseInt(key)];
+                    }
+                    return current[key];
+                }
+                return undefined;
+            }, obj);
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            translateContent();
+            initLegalLanguageSelector();
+        });
+        
+        // Sobreescribir la función de cambio de idioma para usar la nueva función
+        const originalChangeLanguage = window.changeLanguageLegal;
+        window.changeLanguageLegal = function(lang) {
+            localStorage.setItem('preferredLanguage', lang);
+            translateContent();
+        };
+    </script>
 </body>
 </html> 

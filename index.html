@@ -57,6 +57,90 @@
     <!-- External Resources -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Language Selector Styles -->
+    <style>
+        .language-selector {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .current-language {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--bg-glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .current-language:hover {
+            background: var(--bg-glass-hover);
+            color: var(--text-primary);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 8px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 8px;
+            min-width: 120px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: var(--shadow-glass);
+        }
+
+        .language-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .language-option:hover {
+            background: var(--bg-glass-hover);
+            color: var(--text-primary);
+        }
+
+        .language-option.active {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .language-selector {
+                order: -1;
+            }
+        }
+    </style>
+    
     <style>
         * {
             margin: 0;
@@ -1053,6 +1137,30 @@
                 <li><a href="#como-funciona">Cómo Funciona</a></li>
                 <li><a href="#descarga">Descarga</a></li>
             </ul>
+            
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <div class="current-language" id="currentLanguage">
+                    <span class="flag">🇪🇸</span>
+                    <span class="lang-text">ES</span>
+                    <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+                </div>
+                <div class="language-dropdown" id="languageDropdown">
+                    <div class="language-option" data-lang="es">
+                        <span class="flag">🇪🇸</span>
+                        <span>Español</span>
+                    </div>
+                    <div class="language-option" data-lang="en">
+                        <span class="flag">🇺🇸</span>
+                        <span>English</span>
+                    </div>
+                    <div class="language-option" data-lang="fr">
+                        <span class="flag">🇫🇷</span>
+                        <span>Français</span>
+                    </div>
+                </div>
+            </div>
+            
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -1070,6 +1178,21 @@
             <li><a href="#como-funciona">🪄 Cómo Funciona</a></li>
             <li><a href="#descarga">⬇️ Descarga</a></li>
         </ul>
+        
+        <!-- Mobile Language Selector -->
+        <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 15px; margin-top: 15px;">
+            <div style="display: flex; justify-content: center; gap: 15px;">
+                <div class="language-option mobile-lang" data-lang="es" style="padding: 10px 15px; border-radius: 12px; cursor: pointer; transition: all 0.3s ease;">
+                    <span>🇪🇸</span>
+                </div>
+                <div class="language-option mobile-lang" data-lang="en" style="padding: 10px 15px; border-radius: 12px; cursor: pointer; transition: all 0.3s ease;">
+                    <span>🇺🇸</span>
+                </div>
+                <div class="language-option mobile-lang" data-lang="fr" style="padding: 10px 15px; border-radius: 12px; cursor: pointer; transition: all 0.3s ease;">
+                    <span>🇫🇷</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Hero Section -->
@@ -1304,10 +1427,10 @@
                 <h4 style="color: var(--accent-cyan); margin-bottom: 15px; font-size: 1.5rem;">
                     <i class="fas fa-gift"></i> Plan Súper Generoso
                 </h4>
-                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 15px;">
+                <p class="plan-free" style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 15px;">
                     ✨ <strong>3 aventuras diarias GRATIS</strong> para probar sin compromiso
                 </p>
-                <p style="color: var(--text-secondary); font-size: 1.1rem;">
+                <p class="plan-unlimited" style="color: var(--text-secondary); font-size: 1.1rem;">
                     🚀 <strong>Exploraciones ILIMITADAS</strong> registrándote gratis con tu familia
                 </p>
             </div>
@@ -1386,6 +1509,9 @@
         </div>
     </footer>
 
+    <!-- Include translations -->
+    <script src="js/translations.js"></script>
+    
     <script>
         // Sistema de partículas flotantes
         function createParticle() {
@@ -1423,8 +1549,309 @@
             });
         }, observerOptions);
 
+        // Language Selector Functionality
+        function initLanguageSelector() {
+            const currentLanguage = document.getElementById('currentLanguage');
+            const languageDropdown = document.getElementById('languageDropdown');
+            const languageOptions = document.querySelectorAll('.language-option');
+            const mobileLanguageOptions = document.querySelectorAll('.mobile-lang');
+            
+            // Language flags and names
+            const languageData = {
+                'es': { flag: '🇪🇸', name: 'ES', fullName: 'Español' },
+                'en': { flag: '🇺🇸', name: 'EN', fullName: 'English' },
+                'fr': { flag: '🇫🇷', name: 'FR', fullName: 'Français' }
+            };
+            
+            // Update current language display
+            function updateCurrentLanguage(lang) {
+                const flagElement = currentLanguage.querySelector('.flag');
+                const textElement = currentLanguage.querySelector('.lang-text');
+                flagElement.textContent = languageData[lang].flag;
+                textElement.textContent = languageData[lang].name;
+                
+                // Update active option in desktop dropdown
+                languageOptions.forEach(option => {
+                    option.classList.toggle('active', option.dataset.lang === lang);
+                });
+                
+                // Update active option in mobile menu
+                mobileLanguageOptions.forEach(option => {
+                    if (option.dataset.lang === lang) {
+                        option.style.background = 'var(--gradient-primary)';
+                        option.style.transform = 'scale(1.1)';
+                    } else {
+                        option.style.background = 'var(--bg-glass)';
+                        option.style.transform = 'scale(1)';
+                    }
+                });
+            }
+            
+            // Initialize with current language
+            const currentLang = getCurrentLanguage();
+            updateCurrentLanguage(currentLang);
+            
+            // Toggle dropdown
+            currentLanguage.addEventListener('click', () => {
+                languageDropdown.classList.toggle('active');
+            });
+            
+            // Handle language selection - Desktop
+            languageOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const selectedLang = option.dataset.lang;
+                    updateCurrentLanguage(selectedLang);
+                    languageDropdown.classList.remove('active');
+                    changeLanguage(selectedLang);
+                });
+            });
+            
+            // Handle language selection - Mobile
+            mobileLanguageOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const selectedLang = option.dataset.lang;
+                    updateCurrentLanguage(selectedLang);
+                    
+                    // Close mobile menu
+                    const hamburger = document.getElementById('hamburger');
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    
+                    changeLanguage(selectedLang);
+                });
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!currentLanguage.contains(e.target) && !languageDropdown.contains(e.target)) {
+                    languageDropdown.classList.remove('active');
+                }
+            });
+        }
+
+        // Override changeLanguage to work with single page without URL changes
+        function changeLanguage(lang) {
+            // Store the selected language in localStorage
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update the global language variable if needed
+            window.currentLanguage = lang;
+            
+            // Translate content immediately
+            translateContent();
+        }
+        
+        // Override getCurrentLanguage to check localStorage first
+        function getCurrentLanguage() {
+            const stored = localStorage.getItem('preferredLanguage');
+            if (stored && ['es', 'en', 'fr'].includes(stored)) {
+                return stored;
+            }
+            
+            // Fallback to browser language detection
+            const browserLang = navigator.language.split('-')[0];
+            if (['en', 'fr'].includes(browserLang)) {
+                return browserLang;
+            }
+            
+            return 'es'; // Default to Spanish
+        }
+        
+        // Custom translateContent function for this specific HTML structure
+        function translateContent() {
+            const lang = getCurrentLanguage();
+            const t = translations[lang];
+            
+            // Update meta tags
+            document.title = t.meta.title;
+            document.querySelector('meta[name="description"]').setAttribute('content', t.meta.description);
+            document.querySelector('meta[name="keywords"]').setAttribute('content', t.meta.keywords);
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Translate navigation
+            const navLinks = document.querySelectorAll('.nav-links a');
+            if (navLinks.length >= 5) {
+                navLinks[0].textContent = t.nav.home;
+                navLinks[1].textContent = t.nav.screenshots;
+                navLinks[2].textContent = t.nav.features;
+                navLinks[3].textContent = t.nav.howItWorks;
+                navLinks[4].textContent = t.nav.download;
+            }
+            
+            // Translate mobile menu
+            const mobileLinks = document.querySelectorAll('.mobile-menu ul a');
+            if (mobileLinks.length >= 5) {
+                mobileLinks[0].textContent = `🏠 ${t.nav.home}`;
+                mobileLinks[1].textContent = `📱 ${t.nav.screenshots}`;
+                mobileLinks[2].textContent = `⭐ ${t.nav.features}`;
+                mobileLinks[3].textContent = `🪄 ${t.nav.howItWorks}`;
+                mobileLinks[4].textContent = `⬇️ ${t.nav.download}`;
+            }
+            
+            // Translate hero section
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const heroDescription = document.querySelector('.hero-description');
+            const ctaButton = document.querySelector('.cta-button');
+            const ctaSecondary = document.querySelector('.cta-secondary');
+            
+            if (heroTitle) heroTitle.textContent = t.hero.title;
+            if (heroSubtitle) heroSubtitle.textContent = t.hero.subtitle;
+            if (heroDescription) heroDescription.textContent = t.hero.description;
+            if (ctaButton) ctaButton.innerHTML = `<i class="fas fa-rocket"></i> ${t.hero.ctaPrimary}`;
+            if (ctaSecondary) ctaSecondary.innerHTML = `<i class="fas fa-images"></i> ${t.hero.ctaSecondary}`;
+            
+            // Translate screenshots section
+            const screenshotsBadge = document.querySelector('#capturas .section-badge');
+            const screenshotsTitle = document.querySelector('#capturas .section-title');
+            const screenshotsSubtitle = document.querySelector('#capturas .section-subtitle');
+            
+            if (screenshotsBadge) screenshotsBadge.innerHTML = `<i class="fas fa-mobile-alt"></i> ${t.screenshots.badge}`;
+            if (screenshotsTitle) screenshotsTitle.textContent = t.screenshots.title;
+            if (screenshotsSubtitle) screenshotsSubtitle.textContent = t.screenshots.subtitle;
+            
+            // Translate screenshot cards
+            const screenshotCards = document.querySelectorAll('#capturas .screenshot-card');
+            const screenshotData = [
+                t.screenshots.camera,
+                t.screenshots.analysis,
+                t.screenshots.results,
+                t.screenshots.history
+            ];
+            
+            screenshotCards.forEach((card, index) => {
+                if (screenshotData[index]) {
+                    const title = card.querySelector('.screenshot-title');
+                    const description = card.querySelector('.screenshot-description');
+                    if (title) title.textContent = screenshotData[index].title;
+                    if (description) description.textContent = screenshotData[index].description;
+                }
+            });
+            
+            // Translate features section
+            const featuresBadge = document.querySelector('#caracteristicas .section-badge');
+            const featuresTitle = document.querySelector('#caracteristicas .section-title');
+            const featuresSubtitle = document.querySelector('#caracteristicas .section-subtitle');
+            
+            if (featuresBadge) featuresBadge.innerHTML = `<i class="fas fa-star"></i> ${t.features.badge}`;
+            if (featuresTitle) featuresTitle.textContent = t.features.title;
+            if (featuresSubtitle) featuresSubtitle.textContent = t.features.subtitle;
+            
+            // Translate feature cards
+            const featureCards = document.querySelectorAll('#caracteristicas .feature-card');
+            const featureData = [
+                t.features.ai,
+                t.features.family,
+                t.features.voice,
+                t.features.visual,
+                t.features.safe,
+                t.features.design
+            ];
+            
+            featureCards.forEach((card, index) => {
+                if (featureData[index]) {
+                    const title = card.querySelector('.feature-title');
+                    const description = card.querySelector('.feature-description');
+                    if (title) title.textContent = featureData[index].title;
+                    if (description) description.textContent = featureData[index].description;
+                }
+            });
+            
+            // Translate how it works section
+            const howItWorksBadge = document.querySelector('#como-funciona .section-badge');
+            const howItWorksTitle = document.querySelector('#como-funciona .section-title');
+            const howItWorksSubtitle = document.querySelector('#como-funciona .section-subtitle');
+            
+            if (howItWorksBadge) howItWorksBadge.innerHTML = `<i class="fas fa-magic"></i> ${t.howItWorks.badge}`;
+            if (howItWorksTitle) howItWorksTitle.textContent = t.howItWorks.title;
+            if (howItWorksSubtitle) howItWorksSubtitle.textContent = t.howItWorks.subtitle;
+            
+            // Translate steps
+            const steps = document.querySelectorAll('#como-funciona .step');
+            const stepData = [
+                t.howItWorks.step1,
+                t.howItWorks.step2,
+                t.howItWorks.step3
+            ];
+            
+            steps.forEach((step, index) => {
+                if (stepData[index]) {
+                    const title = step.querySelector('.step-title');
+                    const description = step.querySelector('.step-description');
+                    if (title) title.textContent = stepData[index].title;
+                    if (description) description.textContent = stepData[index].description;
+                }
+            });
+            
+            // Translate download section
+            const downloadBadge = document.querySelector('#descarga .section-badge');
+            const downloadTitle = document.querySelector('#descarga .section-title');
+            const downloadSubtitle = document.querySelector('#descarga .section-subtitle');
+            
+            if (downloadBadge) downloadBadge.innerHTML = `<i class="fas fa-rocket"></i> ${t.download.badge}`;
+            if (downloadTitle) downloadTitle.textContent = t.download.title;
+            if (downloadSubtitle) downloadSubtitle.textContent = t.download.subtitle;
+            
+            // Translate coming soon card
+            const comingSoonTitle = document.querySelector('.coming-soon-card h3');
+            const comingSoonDescription = document.querySelector('.coming-soon-card > p');
+            const planTitle = document.querySelector('.coming-soon-card h4');
+            const planFree = document.querySelector('.plan-free');
+            const planUnlimited = document.querySelector('.plan-unlimited');
+            
+            if (comingSoonTitle) comingSoonTitle.textContent = t.download.comingSoon.title;
+            if (comingSoonDescription) comingSoonDescription.textContent = t.download.comingSoon.description;
+            if (planTitle) planTitle.innerHTML = `<i class="fas fa-gift"></i> ${t.download.comingSoon.plan.title}`;
+            if (planFree) planFree.innerHTML = t.download.comingSoon.plan.free;
+            if (planUnlimited) planUnlimited.innerHTML = t.download.comingSoon.plan.unlimited;
+            
+            // Translate store buttons
+            const storeButtons = document.querySelectorAll('.store-button');
+            if (storeButtons.length >= 2) {
+                const appStoreButton = storeButtons[0];
+                const googlePlayButton = storeButtons[1];
+                
+                const appStoreText = appStoreButton.querySelector('div div:first-child');
+                const googlePlayText = googlePlayButton.querySelector('div div:first-child');
+                
+                if (appStoreText) appStoreText.textContent = t.download.appStore;
+                if (googlePlayText) googlePlayText.textContent = t.download.googlePlay;
+            }
+            
+            // Translate footer
+            const footerDescription = document.querySelector('.footer-content > p');
+            if (footerDescription) footerDescription.textContent = t.footer.description;
+            
+            // Translate legal links specifically (not social links)
+            const privacyLink = document.querySelector('a[href="privacy.html"]');
+            const termsLink = document.querySelector('a[href="terms.html"]');
+            const cookiesLink = document.querySelector('a[href="cookies.html"]');
+            
+            if (privacyLink) privacyLink.innerHTML = `<i class="fas fa-shield-alt"></i> ${t.footer.privacy}`;
+            if (termsLink) termsLink.innerHTML = `<i class="fas fa-file-contract"></i> ${t.footer.terms}`;
+            if (cookiesLink) cookiesLink.innerHTML = `<i class="fas fa-cookie-bite"></i> ${t.footer.cookies}`;
+            
+            const copyrightElements = document.querySelectorAll('.footer-content > div:last-child p');
+            if (copyrightElements.length >= 2) {
+                copyrightElements[0].textContent = t.footer.copyright;
+                copyrightElements[1].innerHTML = t.footer.developed.replace('❤️', '<i class="fas fa-heart" style="color: #ff6b9d; animation: pulse 2s infinite;"></i>');
+            }
+        }
+        
+        // Override the global functions from translations.js
+        window.getCurrentLanguage = getCurrentLanguage;
+        window.changeLanguage = changeLanguage;
+        window.translateContent = translateContent;
+
         // Inicialización del DOM
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize translation system
+            translateContent();
+            initLanguageSelector();
+            
             // Observar elementos para animaciones de scroll
             const revealElements = document.querySelectorAll('.scroll-reveal');
             revealElements.forEach(el => observer.observe(el));

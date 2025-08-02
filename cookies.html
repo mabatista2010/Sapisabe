@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Cookies - SapiSabe</title>
+    <title data-key="cookies.title">Política de Cookies - SapiSabe</title>
     <base href="/">
-    <meta name="description" content="Política de Cookies de SapiSabe - Cómo utilizamos cookies y tecnologías similares en nuestra aplicación.">
+    <meta name="description" content="Política de Cookies de SapiSabe - Cómo utilizamos cookies y tecnologías similares en nuestra aplicación." data-key="cookies.metaDescription">
     <meta name="robots" content="noindex, nofollow">
     
     <!-- Favicon -->
@@ -16,6 +16,84 @@
     <!-- External Resources -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Language Selector Styles -->
+    <style>
+        .language-selector {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .current-language {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--bg-glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .current-language:hover {
+            background: var(--bg-glass-hover);
+            color: var(--text-primary);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 8px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 8px;
+            min-width: 120px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: var(--shadow-glass);
+        }
+
+        .language-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .language-option:hover {
+            background: var(--bg-glass-hover);
+            color: var(--text-primary);
+        }
+
+        .language-option.active {
+            background: var(--gradient-primary);
+            color: white;
+        }
+    </style>
+    
     <style>
         * {
             margin: 0;
@@ -279,9 +357,35 @@
                     <img src="assets/sapi.webp" alt="SapiSabe Logo">
                     <span class="logo-text">SapiSabe</span>
                 </a>
-                <a href="index.html" class="back-btn">
-                    <i class="fas fa-arrow-left"></i> Volver al Inicio
-                </a>
+                
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <div class="current-language" id="currentLanguage">
+                            <span class="flag">🇪🇸</span>
+                            <span class="lang-text">ES</span>
+                            <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+                        </div>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option" data-lang="es">
+                                <span class="flag">🇪🇸</span>
+                                <span>Español</span>
+                            </div>
+                            <div class="language-option" data-lang="en">
+                                <span class="flag">🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                            <div class="language-option" data-lang="fr">
+                                <span class="flag">🇫🇷</span>
+                                <span>Français</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="index.html" class="back-btn" data-key="nav.backToSite">
+                        <i class="fas fa-arrow-left"></i> Volver al Inicio
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -290,16 +394,16 @@
     <main class="main-content">
         <div class="container">
             <div class="legal-container">
-                <h1 class="legal-title">Política de Cookies</h1>
-                <p class="legal-subtitle">Última actualización: Agosto 2025</p>
+                <h1 class="legal-title" data-key="cookies.pageTitle">Política de Cookies</h1>
+                <p class="legal-subtitle" data-key="cookies.lastUpdated">Última actualización: Agosto 2025</p>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="whatAre">
+                    <h2 class="section-title" data-key="cookies.sections.whatAre.title">
                         <i class="fas fa-cookie-bite"></i>
                         ¿Qué son las Cookies?
                     </h2>
                     <div class="section-content">
-                        <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web o usas una aplicación. En SapiSabe, utilizamos tecnologías similares a las cookies para mejorar tu experiencia y proporcionar funcionalidades esenciales.</p>
+                        <p data-key="cookies.sections.whatAre.content">Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web o usas una aplicación. En SapiSabe, utilizamos tecnologías similares a las cookies para mejorar tu experiencia y proporcionar funcionalidades esenciales.</p>
                         
                         <div class="highlight">
                             <strong>Importante:</strong> Nuestra aplicación móvil utiliza almacenamiento local y tecnologías similares a las cookies web para funcionar correctamente.
@@ -307,37 +411,37 @@
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="types">
+                    <h2 class="section-title" data-key="cookies.sections.types.title">
                         <i class="fas fa-list"></i>
                         Tipos de Tecnologías que Utilizamos
                     </h2>
                     <div class="section-content">
-                        <h3>1. Almacenamiento Local (AsyncStorage)</h3>
+                        <h3 data-key="cookies.sections.types.local">1. Almacenamiento Local (AsyncStorage)</h3>
                         <ul>
-                            <li><strong>Propósito:</strong> Guardar preferencias de usuario, datos de sesión y configuración</li>
-                            <li><strong>Duración:</strong> Persiste hasta que el usuario elimine la app o los datos</li>
-                            <li><strong>Ejemplos:</strong> Configuración de voz, preferencias de idioma, historial local</li>
+                            <li data-key="cookies.sections.types.localItems.0"><strong>Propósito:</strong> Guardar preferencias de usuario, datos de sesión y configuración</li>
+                            <li data-key="cookies.sections.types.localItems.1"><strong>Duración:</strong> Persiste hasta que el usuario elimine la app o los datos</li>
+                            <li data-key="cookies.sections.types.localItems.2"><strong>Ejemplos:</strong> Configuración de voz, preferencias de idioma, historial local</li>
                         </ul>
 
-                        <h3>2. Analytics y Rendimiento</h3>
+                        <h3 data-key="cookies.sections.types.performance">2. Analytics y Rendimiento</h3>
                         <ul>
-                            <li><strong>Propósito:</strong> Analizar el uso de la aplicación y mejorar el rendimiento</li>
-                            <li><strong>Duración:</strong> Según la configuración del proveedor</li>
-                            <li><strong>Ejemplos:</strong> Métricas de uso, errores de la aplicación, tiempo de respuesta</li>
+                            <li data-key="cookies.sections.types.performanceItems.0"><strong>Propósito:</strong> Analizar el uso de la aplicación y mejorar el rendimiento</li>
+                            <li data-key="cookies.sections.types.performanceItems.1"><strong>Duración:</strong> Según la configuración del proveedor</li>
+                            <li data-key="cookies.sections.types.performanceItems.2"><strong>Ejemplos:</strong> Métricas de uso, errores de la aplicación, tiempo de respuesta</li>
                         </ul>
 
-                        <h3>3. Funcionalidad Esencial</h3>
+                        <h3 data-key="cookies.sections.types.essential">3. Funcionalidad Esencial</h3>
                         <ul>
-                            <li><strong>Propósito:</strong> Proporcionar funciones básicas de la aplicación</li>
-                            <li><strong>Duración:</strong> Sesión o persistente según la función</li>
-                            <li><strong>Ejemplos:</strong> Estado de autenticación, preferencias de cámara, configuración de IA</li>
+                            <li data-key="cookies.sections.types.essentialItems.0"><strong>Propósito:</strong> Proporcionar funciones básicas de la aplicación</li>
+                            <li data-key="cookies.sections.types.essentialItems.1"><strong>Duración:</strong> Sesión o persistente según la función</li>
+                            <li data-key="cookies.sections.types.essentialItems.2"><strong>Ejemplos:</strong> Estado de autenticación, preferencias de cámara, configuración de IA</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="detail">
+                    <h2 class="section-title" data-key="cookies.sections.detail.title">
                         <i class="fas fa-table"></i>
                         Detalle de Tecnologías Utilizadas
                     </h2>
@@ -345,166 +449,225 @@
                         <table class="cookie-table">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Propósito</th>
-                                    <th>Duración</th>
-                                    <th>Obligatorio</th>
+                                    <th data-key="cookies.sections.detail.tableHeaders.0">Nombre</th>
+                                    <th data-key="cookies.sections.detail.tableHeaders.1">Propósito</th>
+                                    <th data-key="cookies.sections.detail.tableHeaders.2">Duración</th>
+                                    <th data-key="cookies.sections.detail.tableHeaders.3">Obligatorio</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>user_preferences</td>
-                                    <td>Preferencias de usuario y configuración</td>
-                                    <td>Persistente</td>
-                                    <td>Sí</td>
+                                    <td data-key="cookies.sections.detail.tableData.0.purpose">Preferencias de usuario y configuración</td>
+                                    <td data-key="cookies.sections.detail.tableData.0.duration">Persistente</td>
+                                    <td data-key="cookies.sections.detail.tableData.0.required">Sí</td>
                                 </tr>
                                 <tr>
                                     <td>auth_session</td>
-                                    <td>Estado de autenticación del usuario</td>
-                                    <td>Sesión</td>
-                                    <td>Sí</td>
+                                    <td data-key="cookies.sections.detail.tableData.1.purpose">Estado de autenticación del usuario</td>
+                                    <td data-key="cookies.sections.detail.tableData.1.duration">Sesión</td>
+                                    <td data-key="cookies.sections.detail.tableData.1.required">Sí</td>
                                 </tr>
                                 <tr>
                                     <td>camera_settings</td>
-                                    <td>Configuración de cámara y flash</td>
-                                    <td>Persistente</td>
-                                    <td>No</td>
+                                    <td data-key="cookies.sections.detail.tableData.2.purpose">Configuración de cámara y flash</td>
+                                    <td data-key="cookies.sections.detail.tableData.2.duration">Persistente</td>
+                                    <td data-key="cookies.sections.detail.tableData.2.required">No</td>
                                 </tr>
                                 <tr>
                                     <td>voice_preferences</td>
-                                    <td>Configuración de texto a voz</td>
-                                    <td>Persistente</td>
-                                    <td>No</td>
+                                    <td data-key="cookies.sections.detail.tableData.3.purpose">Configuración de texto a voz</td>
+                                    <td data-key="cookies.sections.detail.tableData.3.duration">Persistente</td>
+                                    <td data-key="cookies.sections.detail.tableData.3.required">No</td>
                                 </tr>
                                 <tr>
                                     <td>usage_analytics</td>
-                                    <td>Métricas de uso para mejorar la app</td>
-                                    <td>30 días</td>
-                                    <td>No</td>
+                                    <td data-key="cookies.sections.detail.tableData.4.purpose">Métricas de uso para mejorar la app</td>
+                                    <td data-key="cookies.sections.detail.tableData.4.duration">30 días</td>
+                                    <td data-key="cookies.sections.detail.tableData.4.required">No</td>
                                 </tr>
                                 <tr>
                                     <td>error_logs</td>
-                                    <td>Registro de errores para debugging</td>
-                                    <td>7 días</td>
-                                    <td>Sí</td>
+                                    <td data-key="cookies.sections.detail.tableData.5.purpose">Registro de errores para debugging</td>
+                                    <td data-key="cookies.sections.detail.tableData.5.duration">7 días</td>
+                                    <td data-key="cookies.sections.detail.tableData.5.required">Sí</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="childProtection">
+                    <h2 class="section-title" data-key="cookies.sections.childProtection.title">
                         <i class="fas fa-shield-alt"></i>
                         Protección de Datos Infantiles
                     </h2>
                     <div class="section-content">
-                        <p>Como aplicación dirigida a niños, cumplimos estrictamente con las leyes de protección de datos infantiles:</p>
+                        <p data-key="cookies.sections.childProtection.content">Como aplicación dirigida a niños, cumplimos estrictamente con las leyes de protección de datos infantiles:</p>
                         
                         <ul>
-                            <li><strong>COPPA (Children's Online Privacy Protection Act):</strong> Cumplimiento total con las regulaciones estadounidenses</li>
-                            <li><strong>GDPR (General Data Protection Regulation):</strong> Protección especial para menores de 16 años</li>
-                            <li><strong>Consentimiento Parental:</strong> Requerido para usuarios menores de 13 años</li>
-                            <li><strong>Datos Mínimos:</strong> Solo recopilamos información esencial para el funcionamiento</li>
+                            <li data-key="cookies.sections.childProtection.laws.0"><strong>COPPA (Children's Online Privacy Protection Act):</strong> Cumplimiento total con las regulaciones estadounidenses</li>
+                            <li data-key="cookies.sections.childProtection.laws.1"><strong>GDPR (General Data Protection Regulation):</strong> Protección especial para menores de 16 años</li>
+                            <li data-key="cookies.sections.childProtection.laws.2"><strong>Consentimiento Parental:</strong> Requerido para usuarios menores de 13 años</li>
+                            <li data-key="cookies.sections.childProtection.laws.3"><strong>Datos Mínimos:</strong> Solo recopilamos información esencial para el funcionamiento</li>
                         </ul>
 
                         <div class="highlight">
-                            <strong>Compromiso Especial:</strong> No utilizamos tecnologías de seguimiento para usuarios infantiles sin consentimiento parental explícito.
+                            <strong data-key="cookies.sections.childProtection.commitment">Compromiso Especial:</strong> <span data-key="cookies.sections.childProtection.commitmentText">No utilizamos tecnologías de seguimiento para usuarios infantiles sin consentimiento parental explícito.</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="control">
+                    <h2 class="section-title" data-key="cookies.sections.control.title">
                         <i class="fas fa-cog"></i>
                         Control y Gestión
                     </h2>
                     <div class="section-content">
-                        <h3>Cómo Controlar las Tecnologías:</h3>
+                        <h3 data-key="cookies.sections.control.content">Cómo Controlar las Tecnologías:</h3>
                         <ul>
-                            <li><strong>Configuración de la App:</strong> Puedes desactivar analytics en Configuración > Privacidad</li>
-                            <li><strong>Eliminación de Datos:</strong> Opción disponible en Configuración > Datos</li>
-                            <li><strong>Desinstalación:</strong> Eliminar la app también elimina todos los datos locales</li>
-                            <li><strong>Contacto:</strong> Puedes solicitar eliminación de datos por email</li>
+                            <li data-key="cookies.sections.control.methods.0"><strong>Configuración de la App:</strong> Puedes desactivar analytics en Configuración > Privacidad</li>
+                            <li data-key="cookies.sections.control.methods.1"><strong>Eliminación de Datos:</strong> Opción disponible en Configuración > Datos</li>
+                            <li data-key="cookies.sections.control.methods.2"><strong>Desinstalación:</strong> Eliminar la app también elimina todos los datos locales</li>
                         </ul>
 
-                        <h3>Configuración por Defecto:</h3>
+                        <h3 data-key="cookies.sections.control.defaults">Configuración por Defecto:</h3>
                         <ul>
-                            <li><strong>Analytics:</strong> Activado por defecto (se puede desactivar)</li>
-                            <li><strong>Funcionalidad:</strong> Tecnologías esenciales siempre activas</li>
-                            <li><strong>Personalización:</strong> Opcional y controlable por el usuario</li>
+                            <li data-key="cookies.sections.control.defaultItems.0"><strong>Analytics:</strong> Activado por defecto (se puede desactivar)</li>
+                            <li data-key="cookies.sections.control.defaultItems.1"><strong>Funcionalidad:</strong> Tecnologías esenciales siempre activas</li>
+                            <li data-key="cookies.sections.control.defaultItems.2"><strong>Personalización:</strong> Opcional y controlable por el usuario</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="thirdParty">
+                    <h2 class="section-title" data-key="cookies.sections.thirdParty.title">
                         <i class="fas fa-globe"></i>
                         Terceros y Proveedores
                     </h2>
                     <div class="section-content">
-                        <h3>Proveedores de Servicios:</h3>
+                        <h3 data-key="cookies.sections.thirdParty.serviceProviders">Proveedores de Servicios:</h3>
                         <ul>
-                            <li><strong>OpenAI:</strong> Análisis de imágenes (no almacena datos permanentemente)</li>
-                            <li><strong>Supabase:</strong> Almacenamiento de datos (cumple GDPR)</li>
-                            <li><strong>Expo:</strong> Analytics de rendimiento (opcional)</li>
+                            <li data-key="cookies.sections.thirdParty.providers.0"><strong>OpenAI:</strong> Análisis de imágenes (no almacena datos permanentemente)</li>
+                            <li data-key="cookies.sections.thirdParty.providers.1"><strong>Supabase:</strong> Almacenamiento de datos (cumple GDPR)</li>
+                            <li data-key="cookies.sections.thirdParty.providers.2"><strong>Expo:</strong> Analytics de rendimiento (opcional)</li>
                         </ul>
 
-                        <h3>Políticas de Terceros:</h3>
+                        <h3 data-key="cookies.sections.thirdParty.policies">Políticas de Terceros:</h3>
                         <ul>
-                            <li>Todos nuestros proveedores cumplen con estándares de privacidad</li>
-                            <li>No compartimos datos con terceros para publicidad</li>
-                            <li>Los datos se procesan según nuestras políticas</li>
+                            <li data-key="cookies.sections.thirdParty.policyItems.0">Todos nuestros proveedores cumplen con estándares de privacidad</li>
+                            <li data-key="cookies.sections.thirdParty.policyItems.1">No compartimos datos con terceros para publicidad</li>
+                            <li data-key="cookies.sections.thirdParty.policyItems.2">Los datos se procesan según nuestras políticas</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="updates">
+                    <h2 class="section-title" data-key="cookies.sections.updates.title">
                         <i class="fas fa-calendar-alt"></i>
                         Actualizaciones de la Política
                     </h2>
                     <div class="section-content">
-                        <p>Esta política puede actualizarse ocasionalmente para reflejar cambios en nuestras prácticas o regulaciones legales.</p>
+                        <p data-key="cookies.sections.updates.content">Esta política puede actualizarse ocasionalmente para reflejar cambios en nuestras prácticas o regulaciones legales.</p>
                         
-                        <h3>Notificación de Cambios:</h3>
+                        <h3 data-key="cookies.sections.updates.notification">Notificación de Cambios:</h3>
                         <ul>
-                            <li>Te notificaremos cambios significativos por email</li>
-                            <li>Los cambios se publicarán en esta página</li>
-                            <li>La fecha de "Última actualización" se modificará</li>
-                            <li>El uso continuado constituye aceptación de los cambios</li>
+                            <li data-key="cookies.sections.updates.notificationItems.0">Te notificaremos cambios significativos por email</li>
+                            <li data-key="cookies.sections.updates.notificationItems.1">Los cambios se publicarán en esta página</li>
+                            <li data-key="cookies.sections.updates.notificationItems.2">La fecha de "Última actualización" se modificará</li>
+                            <li data-key="cookies.sections.updates.notificationItems.3">El uso continuado constituye aceptación de los cambios</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="legal-section">
-                    <h2 class="section-title">
+                <div class="legal-section" data-section="faq">
+                    <h2 class="section-title" data-key="cookies.sections.faq.title">
                         <i class="fas fa-question-circle"></i>
                         Preguntas Frecuentes
                     </h2>
                     <div class="section-content">
-                        <h3>¿Puedo desactivar todas las tecnologías?</h3>
-                        <p>No, las tecnologías esenciales son necesarias para el funcionamiento básico de la aplicación. Sin embargo, puedes desactivar las opcionales.</p>
+                        <h3 data-key="cookies.sections.faq.questions.0.question">¿Puedo desactivar todas las tecnologías?</h3>
+                        <p data-key="cookies.sections.faq.questions.0.answer">No, las tecnologías esenciales son necesarias para el funcionamiento básico de la aplicación. Sin embargo, puedes desactivar las opcionales.</p>
 
-                        <h3>¿Los datos se comparten con terceros?</h3>
-                        <p>Solo con nuestros proveedores de servicios esenciales (OpenAI, Supabase) y siempre según nuestras políticas de privacidad.</p>
+                        <h3 data-key="cookies.sections.faq.questions.1.question">¿Los datos se comparten con terceros?</h3>
+                        <p data-key="cookies.sections.faq.questions.1.answer">Solo con nuestros proveedores de servicios esenciales (OpenAI, Supabase) y siempre según nuestras políticas de privacidad.</p>
 
-                        <h3>¿Cómo afecta esto a los niños?</h3>
-                        <p>Implementamos protecciones especiales para usuarios infantiles y requerimos consentimiento parental para menores de 13 años.</p>
+                        <h3 data-key="cookies.sections.faq.questions.2.question">¿Cómo afecta esto a los niños?</h3>
+                        <p data-key="cookies.sections.faq.questions.2.answer">Implementamos protecciones especiales para usuarios infantiles y requerimos consentimiento parental para menores de 13 años.</p>
 
-                        <h3>¿Puedo eliminar mis datos?</h3>
-                        <p>Sí, puedes eliminar todos tus datos desde la configuración de la aplicación o contactándonos directamente.</p>
+                        <h3 data-key="cookies.sections.faq.questions.3.question">¿Puedo eliminar mis datos?</h3>
+                        <p data-key="cookies.sections.faq.questions.3.answer">Sí, puedes eliminar todos tus datos desde la configuración de la aplicación o contactándonos directamente.</p>
                     </div>
                 </div>
 
                 <div class="contact-info">
-                    <h3><i class="fas fa-envelope"></i> Contacto</h3>
-                    <p><strong>Email:</strong> privacy@sapisabe.com</p>
-                    <p><strong>Asunto:</strong> Consulta sobre Política de Cookies</p>
-                    <p><strong>Tiempo de respuesta:</strong> 48 horas hábiles</p>
+                    <h3 data-key="cookies.sections.contact.title"><i class="fas fa-envelope"></i> Contacto</h3>
+                    <p data-key="cookies.sections.contact.email"><strong>Email:</strong> privacy@sapisabe.com</p>
+                    <p data-key="cookies.sections.contact.subject"><strong>Asunto:</strong> Consulta sobre Política de Cookies</p>
+                    <p data-key="cookies.sections.contact.response"><strong>Tiempo de respuesta:</strong> 48 horas hábiles</p>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- Include legal translations -->
+    <script src="js/legal-translations.js"></script>
+    
+    <script>
+        // Función para traducir usando las claves de datos
+        function translateContent() {
+            const lang = getCurrentLanguageLegal();
+            const t = legalTranslations[lang];
+            
+            if (!t || !t.cookies) return;
+            
+            // Actualizar meta tags
+            document.title = t.cookies.title;
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) metaDescription.setAttribute('content', t.cookies.metaDescription);
+            
+            // Traducir elementos con data-key
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                const translation = getNestedTranslation(t, key);
+                if (translation) {
+                    if (element.tagName === 'TITLE' || element.tagName === 'META') {
+                        // Ya manejado arriba
+                        return;
+                    }
+                    element.textContent = translation;
+                }
+            });
+            
+            // Actualizar idioma HTML
+            document.documentElement.lang = lang;
+        }
+        
+        function getNestedTranslation(obj, path) {
+            return path.split('.').reduce((current, key) => {
+                if (current && typeof current === 'object') {
+                    // Manejar arrays con índices
+                    if (!isNaN(key)) {
+                        return current[parseInt(key)];
+                    }
+                    return current[key];
+                }
+                return undefined;
+            }, obj);
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            translateContent();
+            initLegalLanguageSelector();
+        });
+        
+        // Sobreescribir la función de cambio de idioma para usar la nueva función
+        const originalChangeLanguage = window.changeLanguageLegal;
+        window.changeLanguageLegal = function(lang) {
+            localStorage.setItem('preferredLanguage', lang);
+            translateContent();
+        };
+    </script>
 </body>
 </html> 
