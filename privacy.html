@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - SapiSabe</title>
+    <base href="/">
+    <meta name="description" content="Política de Privacidad de SapiSabe - Cómo protegemos y utilizamos la información de nuestros usuarios y sus familias.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/icon.png">
+    
+    <!-- External Resources -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Colores principales */
+            --primary-purple: #6366f1;
+            --primary-blue: #8b5cf6;
+            --accent-cyan: #00d4ff;
+            --accent-pink: #ff6b9d;
+            --accent-yellow: #ffd93d;
+            --accent-green: #6bcf7f;
+            
+            /* Fondos glassmorphism */
+            --bg-dark: #0a0a1a;
+            --bg-darker: #050510;
+            --bg-surface: rgba(15, 15, 35, 0.7);
+            --bg-glass: rgba(255, 255, 255, 0.08);
+            --bg-glass-hover: rgba(255, 255, 255, 0.12);
+            
+            /* Texto */
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --text-accent: #94a3b8;
+            
+            /* Gradientes */
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #00d4ff 100%);
+            --gradient-secondary: linear-gradient(135deg, #ff6b9d 0%, #ffd93d 100%);
+            --gradient-rainbow: linear-gradient(45deg, #ff6b9d, #ffd93d, #6bcf7f, #00d4ff, #6366f1, #8b5cf6);
+            
+            /* Sombras */
+            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 50px rgba(99, 102, 241, 0.3);
+            --shadow-colored: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-btn {
+            background: var(--bg-glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            background: var(--bg-glass-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glass);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+
+        .legal-container {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-glass);
+        }
+
+        .legal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .legal-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        .legal-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content p {
+            margin-bottom: 1rem;
+        }
+
+        .section-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            padding: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-purple);
+            margin: 1rem 0;
+        }
+
+        .contact-info {
+            background: var(--bg-glass);
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h3 {
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .legal-container {
+                padding: 2rem;
+                margin: 1rem 0;
+            }
+
+            .legal-title {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="assets/sapi.webp" alt="SapiSabe Logo">
+                    <span class="logo-text">SapiSabe</span>
+                </a>
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Volver al Inicio
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="legal-container">
+                <h1 class="legal-title">Política de Privacidad</h1>
+                <p class="legal-subtitle">Última actualización: Agosto 2025</p>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Información General
+                    </h2>
+                    <div class="section-content">
+                        <p>En SapiSabe, nos tomamos muy en serio la privacidad de nuestros usuarios, especialmente la de los niños. Esta Política de Privacidad describe cómo recopilamos, utilizamos y protegemos la información personal que obtenemos a través de nuestra aplicación móvil SapiSabe.</p>
+                        
+                        <div class="highlight">
+                            <strong>Compromiso con la Privacidad Infantil:</strong> Cumplimos estrictamente con las leyes de protección de datos infantiles, incluyendo COPPA (Children's Online Privacy Protection Act) y GDPR.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-camera"></i>
+                        Información que Recopilamos
+                    </h2>
+                    <div class="section-content">
+                        <h3>Información del Usuario:</h3>
+                        <ul>
+                            <li><strong>Información de registro:</strong> Email, nombre completo (solo para padres)</li>
+                            <li><strong>Perfiles infantiles:</strong> Nombre, edad, preferencias de aprendizaje</li>
+                            <li><strong>Fotografías:</strong> Imágenes capturadas para análisis con IA</li>
+                            <li><strong>Datos de uso:</strong> Historial de análisis, preferencias de la app</li>
+                        </ul>
+
+                        <h3>Información Técnica:</h3>
+                        <ul>
+                            <li><strong>Dispositivo:</strong> Tipo de dispositivo, sistema operativo, versión de la app</li>
+                            <li><strong>Uso de la app:</strong> Funciones utilizadas, tiempo de uso, errores</li>
+                            <li><strong>Conectividad:</strong> Estado de conexión, calidad de red</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-cogs"></i>
+                        Cómo Utilizamos la Información
+                    </h2>
+                    <div class="section-content">
+                        <h3>Para Proporcionar el Servicio:</h3>
+                        <ul>
+                            <li>Análisis de imágenes con OpenAI Vision para identificar objetos y lugares</li>
+                            <li>Personalización de respuestas según la edad del niño</li>
+                            <li>Gestión de perfiles familiares y historial de análisis</li>
+                            <li>Mejora continua de la experiencia de usuario</li>
+                        </ul>
+
+                        <h3>Para la Seguridad:</h3>
+                        <ul>
+                            <li>Detección y prevención de uso fraudulento</li>
+                            <li>Protección contra spam y contenido inapropiado</li>
+                            <li>Mantenimiento de la integridad de la plataforma</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-share-alt"></i>
+                        Compartir Información
+                    </h2>
+                    <div class="section-content">
+                        <p><strong>No vendemos, alquilamos ni compartimos información personal con terceros con fines comerciales.</strong></p>
+                        
+                        <h3>Compartimos información solo en estos casos:</h3>
+                        <ul>
+                            <li><strong>Proveedores de servicios:</strong> OpenAI (análisis de imágenes), Supabase (almacenamiento)</li>
+                            <li><strong>Cumplimiento legal:</strong> Cuando lo requiera la ley o autoridades competentes</li>
+                            <li><strong>Seguridad:</strong> Para proteger nuestros derechos, propiedad o seguridad</li>
+                        </ul>
+
+                        <div class="highlight">
+                            <strong>Protección Especial para Niños:</strong> Nunca compartimos información personal de niños con terceros sin consentimiento parental explícito.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-lock"></i>
+                        Seguridad de Datos
+                    </h2>
+                    <div class="section-content">
+                        <h3>Medidas de Seguridad Implementadas:</h3>
+                        <ul>
+                            <li><strong>Cifrado:</strong> Todos los datos se transmiten y almacenan cifrados</li>
+                            <li><strong>Acceso restringido:</strong> Solo personal autorizado puede acceder a datos personales</li>
+                            <li><strong>Auditorías regulares:</strong> Revisamos periódicamente nuestras medidas de seguridad</li>
+                            <li><strong>Backups seguros:</strong> Copias de seguridad encriptadas</li>
+                        </ul>
+
+                        <p>A pesar de nuestras medidas de seguridad, ningún sistema es 100% seguro. Te notificaremos inmediatamente si detectamos cualquier violación de seguridad que pueda afectar tu información personal.</p>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-calendar-alt"></i>
+                        Retención de Datos
+                    </h2>
+                    <div class="section-content">
+                        <h3>Períodos de Retención:</h3>
+                        <ul>
+                            <li><strong>Datos de cuenta:</strong> Mientras mantengas tu cuenta activa</li>
+                            <li><strong>Fotografías:</strong> 30 días después del análisis (para mejorar el servicio)</li>
+                            <li><strong>Datos de uso:</strong> 2 años para análisis y mejoras</li>
+                            <li><strong>Datos de facturación:</strong> Según requerimientos legales (7 años)</li>
+                        </ul>
+
+                        <p>Puedes solicitar la eliminación de tus datos en cualquier momento a través de la configuración de la app o contactándonos directamente.</p>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-globe"></i>
+                        Transferencias Internacionales
+                    </h2>
+                    <div class="section-content">
+                        <p>Nuestros servicios utilizan proveedores ubicados en diferentes países. Todas las transferencias internacionales de datos se realizan con las garantías adecuadas según el GDPR y otras leyes aplicables.</p>
+                        
+                        <h3>Proveedores Principales:</h3>
+                        <ul>
+                            <li><strong>OpenAI:</strong> Estados Unidos (análisis de imágenes)</li>
+                            <li><strong>Supabase:</strong> Unión Europea (almacenamiento de datos)</li>
+                            <li><strong>Servicios de hosting:</strong> Varias ubicaciones para optimizar rendimiento</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user-shield"></i>
+                        Tus Derechos
+                    </h2>
+                    <div class="section-content">
+                        <h3>Derechos que Tienes:</h3>
+                        <ul>
+                            <li><strong>Acceso:</strong> Solicitar información sobre los datos que tenemos sobre ti</li>
+                            <li><strong>Rectificación:</strong> Corregir datos inexactos o incompletos</li>
+                            <li><strong>Eliminación:</strong> Solicitar la eliminación de tus datos personales</li>
+                            <li><strong>Portabilidad:</strong> Recibir tus datos en formato estructurado</li>
+                            <li><strong>Oposición:</strong> Oponerte al procesamiento de tus datos</li>
+                            <li><strong>Limitación:</strong> Limitar el procesamiento de tus datos</li>
+                        </ul>
+
+                        <p>Para ejercer estos derechos, contacta con nosotros a través de los medios indicados al final de esta política.</p>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-cookie-bite"></i>
+                        Cookies y Tecnologías Similares
+                    </h2>
+                    <div class="section-content">
+                        <p>Nuestra aplicación móvil puede utilizar tecnologías similares a las cookies para mejorar la experiencia del usuario y analizar el uso de la aplicación.</p>
+                        
+                        <h3>Tipos de Tecnologías Utilizadas:</h3>
+                        <ul>
+                            <li><strong>Almacenamiento local:</strong> Para guardar preferencias y datos de sesión</li>
+                            <li><strong>Analytics:</strong> Para entender cómo se usa la aplicación</li>
+                            <li><strong>Publicidad:</strong> Para mostrar contenido relevante (solo en versión gratuita)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-bell"></i>
+                        Cambios en esta Política
+                    </h2>
+                    <div class="section-content">
+                        <p>Podemos actualizar esta Política de Privacidad ocasionalmente. Te notificaremos sobre cambios significativos a través de:</p>
+                        <ul>
+                            <li>Notificación en la aplicación</li>
+                            <li>Email a la dirección registrada</li>
+                            <li>Actualización de la fecha en esta página</li>
+                        </ul>
+                        
+                        <p>Te recomendamos revisar esta política periódicamente para mantenerte informado sobre cómo protegemos tu información.</p>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <h3><i class="fas fa-envelope"></i> Contacto</h3>
+                    <p><strong>Email:</strong> privacy@sapisabe.com</p>
+                    <p><strong>Asunto:</strong> Consulta sobre Política de Privacidad</p>
+                    <p><strong>Tiempo de respuesta:</strong> 48 horas hábiles</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 

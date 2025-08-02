@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso Legal - SapiSabe</title>
+    <base href="/">
+    <meta name="description" content="Aviso Legal de SapiSabe - Información legal y responsabilidades sobre el uso de nuestra aplicación.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/icon.png">
+    
+    <!-- External Resources -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Colores principales */
+            --primary-purple: #6366f1;
+            --primary-blue: #8b5cf6;
+            --accent-cyan: #00d4ff;
+            --accent-pink: #ff6b9d;
+            --accent-yellow: #ffd93d;
+            --accent-green: #6bcf7f;
+            
+            /* Fondos glassmorphism */
+            --bg-dark: #0a0a1a;
+            --bg-darker: #050510;
+            --bg-surface: rgba(15, 15, 35, 0.7);
+            --bg-glass: rgba(255, 255, 255, 0.08);
+            --bg-glass-hover: rgba(255, 255, 255, 0.12);
+            
+            /* Texto */
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --text-accent: #94a3b8;
+            
+            /* Gradientes */
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #00d4ff 100%);
+            --gradient-secondary: linear-gradient(135deg, #ff6b9d 0%, #ffd93d 100%);
+            --gradient-rainbow: linear-gradient(45deg, #ff6b9d, #ffd93d, #6bcf7f, #00d4ff, #6366f1, #8b5cf6);
+            
+            /* Sombras */
+            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 50px rgba(99, 102, 241, 0.3);
+            --shadow-colored: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-btn {
+            background: var(--bg-glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            background: var(--bg-glass-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glass);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+
+        .legal-container {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-glass);
+        }
+
+        .legal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .legal-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        .legal-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content p {
+            margin-bottom: 1rem;
+        }
+
+        .section-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            padding: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-purple);
+            margin: 1rem 0;
+        }
+
+        .warning {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 217, 61, 0.1));
+            padding: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-pink);
+            margin: 1rem 0;
+        }
+
+        .contact-info {
+            background: var(--bg-glass);
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h3 {
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .legal-container {
+                padding: 2rem;
+                margin: 1rem 0;
+            }
+
+            .legal-title {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="assets/sapi.webp" alt="SapiSabe Logo">
+                    <span class="logo-text">SapiSabe</span>
+                </a>
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Volver al Inicio
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="legal-container">
+                <h1 class="legal-title">Aviso Legal</h1>
+                <p class="legal-subtitle">Última actualización: Agosto 2025</p>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-building"></i>
+                        Información de la Empresa
+                    </h2>
+                    <div class="section-content">
+                        <h3>Datos de la Empresa:</h3>
+                        <ul>
+                            <li><strong>Nombre:</strong> SapiSabe</li>
+                            <li><strong>Tipo:</strong> Aplicación móvil educativa</li>
+                            <li><strong>Servicios:</strong> Análisis de imágenes con IA para educación infantil</li>
+                            <li><strong>Público objetivo:</strong> Niños de 3 a 8 años y sus familias</li>
+                        </ul>
+
+                        <div class="highlight">
+                            <strong>Nota:</strong> SapiSabe es una aplicación educativa que utiliza inteligencia artificial para proporcionar experiencias de aprendizaje interactivas y personalizadas.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Limitación de Responsabilidad
+                    </h2>
+                    <div class="section-content">
+                        <h3>Uso de la Aplicación:</h3>
+                        <ul>
+                            <li>La aplicación se proporciona "tal como está" sin garantías</li>
+                            <li>No garantizamos disponibilidad continua del servicio</li>
+                            <li>Los análisis de IA pueden contener errores o imprecisiones</li>
+                            <li>No somos responsables por decisiones basadas en los análisis</li>
+                        </ul>
+
+                        <h3>Limitaciones Específicas:</h3>
+                        <ul>
+                            <li><strong>Análisis de IA:</strong> Los resultados son informativos y no deben considerarse como consejo profesional</li>
+                            <li><strong>Contenido Educativo:</strong> Aunque nos esforzamos por la precisión, no garantizamos la exactitud total</li>
+                            <li><strong>Dispositivos:</strong> No garantizamos compatibilidad con todos los dispositivos</li>
+                            <li><strong>Conectividad:</strong> El funcionamiento depende de conexión a internet</li>
+                        </ul>
+
+                        <div class="warning">
+                            <strong>Advertencia:</strong> La aplicación está diseñada para uso educativo y recreativo. No debe utilizarse para decisiones médicas, legales o profesionales.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-copyright"></i>
+                        Propiedad Intelectual
+                    </h2>
+                    <div class="section-content">
+                        <h3>Derechos Reservados:</h3>
+                        <ul>
+                            <li><strong>Aplicación:</strong> SapiSabe y su contenido son propiedad intelectual protegida</li>
+                            <li><strong>Diseño:</strong> El diseño, interfaz y funcionalidades están protegidos</li>
+                            <li><strong>Marca:</strong> SapiSabe es una marca registrada</li>
+                            <li><strong>Contenido:</strong> Textos, imágenes y elementos gráficos están protegidos</li>
+                        </ul>
+
+                        <h3>Uso Permitido:</h3>
+                        <ul>
+                            <li>Uso personal y educativo de la aplicación</li>
+                            <li>Compartir resultados educativos con familiares</li>
+                            <li>Uso en entornos educativos autorizados</li>
+                        </ul>
+
+                        <h3>Uso Prohibido:</h3>
+                        <ul>
+                            <li>Reproducir, distribuir o modificar la aplicación</li>
+                            <li>Usar la marca para fines comerciales sin autorización</li>
+                            <li>Intentar hackear o comprometer la seguridad</li>
+                            <li>Usar la app para fines ilegales o inapropiados</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Seguridad y Privacidad
+                    </h2>
+                    <div class="section-content">
+                        <h3>Compromiso de Seguridad:</h3>
+                        <ul>
+                            <li>Implementamos medidas de seguridad técnicas y organizativas</li>
+                            <li>Protegemos la información personal de nuestros usuarios</li>
+                            <li>Cumplimos con regulaciones de protección de datos</li>
+                            <li>Realizamos auditorías regulares de seguridad</li>
+                        </ul>
+
+                        <h3>Protección Especial para Niños:</h3>
+                        <ul>
+                            <li>Cumplimiento estricto de COPPA y GDPR</li>
+                            <li>Consentimiento parental requerido para menores de 13 años</li>
+                            <li>Recopilación mínima de datos personales</li>
+                            <li>No seguimiento publicitario para usuarios infantiles</li>
+                        </ul>
+
+                        <div class="highlight">
+                            <strong>Transparencia:</strong> Nuestras políticas de privacidad están disponibles públicamente y se actualizan regularmente.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-gavel"></i>
+                        Jurisdicción y Ley Aplicable
+                    </h2>
+                    <div class="section-content">
+                        <h3>Ley Aplicable:</h3>
+                        <ul>
+                            <li>Estos términos se rigen por la legislación española</li>
+                            <li>Los tribunales de Madrid tienen jurisdicción exclusiva</li>
+                            <li>Se aplican las leyes de protección de datos europeas</li>
+                        </ul>
+
+                        <h3>Resolución de Disputas:</h3>
+                        <ul>
+                            <li>Intentamos resolver conflictos amistosamente</li>
+                            <li>En caso de no acuerdo, se aplica la ley española</li>
+                            <li>Los tribunales de Madrid tienen competencia exclusiva</li>
+                            <li>Se aplican las regulaciones de protección al consumidor</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Descargo de Responsabilidad
+                    </h2>
+                    <div class="section-content">
+                        <h3>Análisis de IA:</h3>
+                        <ul>
+                            <li>Los análisis son generados por inteligencia artificial</li>
+                            <li>Pueden contener errores o imprecisiones</li>
+                            <li>No sustituyen el juicio humano o profesional</li>
+                            <li>No deben usarse para decisiones críticas</li>
+                        </ul>
+
+                        <h3>Contenido Educativo:</h3>
+                        <ul>
+                            <li>El contenido es informativo y educativo</li>
+                            <li>No garantizamos la exactitud total de la información</li>
+                            <li>Recomendamos verificar información importante</li>
+                            <li>El contenido puede actualizarse sin previo aviso</li>
+                        </ul>
+
+                        <h3>Uso de la Aplicación:</h3>
+                        <ul>
+                            <li>El usuario es responsable del uso adecuado de la app</li>
+                            <li>No garantizamos disponibilidad 24/7</li>
+                            <li>El funcionamiento depende de factores externos</li>
+                            <li>Pueden existir interrupciones técnicas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-edit"></i>
+                        Modificaciones
+                    </h2>
+                    <div class="section-content">
+                        <p>Nos reservamos el derecho de modificar este aviso legal en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación.</p>
+                        
+                        <h3>Notificación de Cambios:</h3>
+                        <ul>
+                            <li>Cambios significativos se notifican por email</li>
+                            <li>Los cambios se publican en esta página</li>
+                            <li>La fecha de "Última actualización" se modifica</li>
+                            <li>El uso continuado constituye aceptación de los cambios</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-envelope"></i>
+                        Contacto Legal
+                    </h2>
+                    <div class="section-content">
+                        <p>Para consultas legales o reclamaciones, puedes contactarnos a través de los siguientes medios:</p>
+                        
+                        <div class="contact-info">
+                            <h3><i class="fas fa-envelope"></i> Información de Contacto</h3>
+                            <p><strong>Email:</strong> legal@sapisabe.com</p>
+                            <p><strong>Asunto:</strong> Consulta Legal</p>
+                            <p><strong>Tiempo de respuesta:</strong> 72 horas hábiles</p>
+                            <p><strong>Horario:</strong> Lunes a Viernes, 9:00 - 18:00 (CET)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 
