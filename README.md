@@ -26,7 +26,7 @@ SapiSabe es una aplicación educativa revolucionaria que transforma cada foto en
 Este repositorio está configurado para desplegarse automáticamente en Vercel.
 
 ### URL de Producción
-- **Landing Page**: [https://sapisabe.vercel.app](https://sapisabe.vercel.app)
+- **Landing Page**: [https://sapisabe.com](https://sapisabe.com)
 
 ## 📁 Estructura del Proyecto
 
@@ -64,7 +64,7 @@ Sapisabe/
 
 ## 📞 Contacto
 
-- **Website**: [https://sapisabe.vercel.app](https://sapisabe.vercel.app)
+- **Website**: [https://sapisabe.com](https://sapisabe.com)
 - **Email**: info@sapisabe.com
 - **Twitter**: [@SapiSabe](https://twitter.com/SapiSabe)
 
