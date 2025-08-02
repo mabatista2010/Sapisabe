@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="terms.title">Términos de Uso - SapiSabe</title>
+    <base href="/">
+    <meta name="description" content="Términos de Uso de SapiSabe - Condiciones y reglas para el uso de nuestra aplicación educativa." data-key="terms.metaDescription">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/icon.png">
+    
+    <!-- External Resources -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Language Selector Styles -->
+    <style>
+        .language-selector {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .current-language {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--bg-glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .current-language:hover {
+            background: var(--bg-glass-hover);
+            color: var(--text-primary);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 8px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 8px;
+            min-width: 120px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: var(--shadow-glass);
+        }
+
+        .language-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .language-option:hover {
+            background: var(--bg-glass-hover);
+            color: var(--text-primary);
+        }
+
+        .language-option.active {
+            background: var(--gradient-primary);
+            color: white;
+        }
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Colores principales */
+            --primary-purple: #6366f1;
+            --primary-blue: #8b5cf6;
+            --accent-cyan: #00d4ff;
+            --accent-pink: #ff6b9d;
+            --accent-yellow: #ffd93d;
+            --accent-green: #6bcf7f;
+            
+            /* Fondos glassmorphism */
+            --bg-dark: #0a0a1a;
+            --bg-darker: #050510;
+            --bg-surface: rgba(15, 15, 35, 0.7);
+            --bg-glass: rgba(255, 255, 255, 0.08);
+            --bg-glass-hover: rgba(255, 255, 255, 0.12);
+            
+            /* Texto */
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --text-accent: #94a3b8;
+            
+            /* Gradientes */
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #00d4ff 100%);
+            --gradient-secondary: linear-gradient(135deg, #ff6b9d 0%, #ffd93d 100%);
+            --gradient-rainbow: linear-gradient(45deg, #ff6b9d, #ffd93d, #6bcf7f, #00d4ff, #6366f1, #8b5cf6);
+            
+            /* Sombras */
+            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 50px rgba(99, 102, 241, 0.3);
+            --shadow-colored: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-btn {
+            background: var(--bg-glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            background: var(--bg-glass-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glass);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+
+        .legal-container {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-glass);
+        }
+
+        .legal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .legal-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        .legal-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content p {
+            margin-bottom: 1rem;
+        }
+
+        .section-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            padding: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-purple);
+            margin: 1rem 0;
+        }
+
+        .warning {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 217, 61, 0.1));
+            padding: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-pink);
+            margin: 1rem 0;
+        }
+
+        .contact-info {
+            background: var(--bg-glass);
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h3 {
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .legal-container {
+                padding: 2rem;
+                margin: 1rem 0;
+            }
+
+            .legal-title {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../" class="logo">
+                    <img src="../assets/sapi.webp" alt="SapiSabe Logo">
+                    <span class="logo-text">SapiSabe</span>
+                </a>
+                
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <div class="current-language" id="currentLanguage">
+                            <span class="flag">🇪🇸</span>
+                            <span class="lang-text">ES</span>
+                            <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+                        </div>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option" data-lang="es">
+                                <span class="flag">🇪🇸</span>
+                                <span>Español</span>
+                            </div>
+                            <div class="language-option" data-lang="en">
+                                <span class="flag">🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                            <div class="language-option" data-lang="fr">
+                                <span class="flag">🇫🇷</span>
+                                <span>Français</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="../" class="back-btn" data-key="nav.backToSite">
+                        <i class="fas fa-arrow-left"></i> Volver al Inicio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="legal-container">
+                <h1 class="legal-title" data-key="terms.pageTitle">Términos de Uso</h1>
+                <p class="legal-subtitle" data-key="terms.lastUpdated">Última actualización: Agosto 2025</p>
+
+                <div class="legal-section" data-section="acceptance">
+                    <h2 class="section-title" data-key="terms.sections.acceptance.title">
+                        <i class="fas fa-file-contract"></i>
+                        Aceptación de Términos
+                    </h2>
+                    <div class="section-content">
+                        <p data-key="terms.sections.acceptance.content">Al descargar, instalar o usar la aplicación SapiSabe, aceptas estar sujeto a estos Términos de Uso. Si no estás de acuerdo con alguna parte de estos términos, no debes usar nuestra aplicación.</p>
+                        
+                        <div class="highlight">
+                            <strong>Uso por Menores:</strong> Los usuarios menores de 13 años deben tener el consentimiento y supervisión de un padre o tutor legal para usar la aplicación.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legal-section" data-section="service">
+                    <h2 class="section-title" data-key="terms.sections.service.title">
+                        <i class="fas fa-info-circle"></i>
+                        Descripción del Servicio
+                    </h2>
+                    <div class="section-content">
+                        <p data-key="terms.sections.service.content">SapiSabe es una aplicación educativa que utiliza inteligencia artificial para analizar fotografías y proporcionar explicaciones adaptadas a la edad del usuario. El servicio incluye:</p>
+                        
+                        <ul>
+                            <li data-key="terms.sections.service.features.0">Análisis de imágenes con OpenAI Vision</li>
+                            <li data-key="terms.sections.service.features.1">Creación de perfiles familiares</li>
+                            <li data-key="terms.sections.service.features.2">Historial de análisis</li>
+                            <li data-key="terms.sections.service.features.3">Funciones de texto a voz</li>
+                            <li data-key="terms.sections.service.features.4">Contenido educativo personalizado</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section" data-section="accounts">
+                    <h2 class="section-title" data-key="terms.sections.accounts.title">
+                        <i class="fas fa-user-plus"></i>
+                        Registro y Cuentas
+                    </h2>
+                    <div class="section-content">
+                        <h3 data-key="terms.sections.accounts.requirements">Requisitos de Registro:</h3>
+                        <ul>
+                            <li data-key="terms.sections.accounts.responsibilities.0">Debes tener al menos 18 años para crear una cuenta</li>
+                            <li data-key="terms.sections.accounts.responsibilities.1">Proporcionar información veraz y actualizada</li>
+                            <li data-key="terms.sections.accounts.responsibilities.2">Mantener la confidencialidad de tus credenciales</li>
+                            <li data-key="terms.sections.accounts.responsibilities.3">Notificar inmediatamente cualquier uso no autorizado</li>
+                        </ul>
+
+                        <h3 data-key="terms.sections.accounts.restrictions">Responsabilidades de la Cuenta:</h3>
+                        <ul>
+                            <li data-key="terms.sections.accounts.restrictionItems.0">Eres responsable de toda actividad en tu cuenta</li>
+                            <li data-key="terms.sections.accounts.restrictionItems.1">No compartir tu cuenta con terceros</li>
+                            <li data-key="terms.sections.accounts.restrictionItems.2">Mantener actualizada tu información de contacto</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section" data-section="usage">
+                    <h2 class="section-title" data-key="terms.sections.usage.title">
+                        <i class="fas fa-camera"></i>
+                        Uso Aceptable
+                    </h2>
+                    <div class="section-content">
+                        <h3 data-key="terms.sections.usage.allowed">Puedes usar SapiSabe para:</h3>
+                        <ul>
+                            <li data-key="terms.sections.usage.allowedItems.0">Fotografiar objetos y lugares para análisis educativo</li>
+                            <li data-key="terms.sections.usage.allowedItems.1">Crear perfiles para niños bajo tu supervisión</li>
+                            <li data-key="terms.sections.usage.allowedItems.2">Compartir resultados educativos con familiares</li>
+                            <li data-key="terms.sections.usage.allowedItems.3">Usar el contenido para aprendizaje personal</li>
+                        </ul>
+
+                        <div class="warning">
+                            <strong data-key="terms.sections.usage.prohibited">Uso Prohibido:</strong> No puedes usar la aplicación para:
+                            <ul>
+                                <li data-key="terms.sections.usage.prohibitedItems.0">Fotografiar contenido inapropiado o ilegal</li>
+                                <li data-key="terms.sections.usage.prohibitedItems.1">Violar derechos de propiedad intelectual</li>
+                                <li data-key="terms.sections.usage.prohibitedItems.2">Intentar hackear o comprometer la seguridad</li>
+                                <li data-key="terms.sections.usage.prohibitedItems.3">Usar la app para fines comerciales sin autorización</li>
+                                <li data-key="terms.sections.usage.prohibitedItems.4">Compartir contenido ofensivo o dañino</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legal-section" data-section="intellectual">
+                    <h2 class="section-title" data-key="terms.sections.intellectual.title">
+                        <i class="fas fa-copyright"></i>
+                        Propiedad Intelectual
+                    </h2>
+                    <div class="section-content">
+                        <h3 data-key="terms.sections.intellectual.ourRights">Nuestros Derechos:</h3>
+                        <ul>
+                            <li data-key="terms.sections.intellectual.ourRightItems.0">La aplicación y su contenido son propiedad de SapiSabe</li>
+                            <li data-key="terms.sections.intellectual.ourRightItems.1">El diseño, código y funcionalidades están protegidos</li>
+                            <li data-key="terms.sections.intellectual.ourRightItems.2">Los análisis generados por IA son para uso educativo</li>
+                        </ul>
+
+                        <h3 data-key="terms.sections.intellectual.yourRights">Tus Derechos:</h3>
+                        <ul>
+                            <li data-key="terms.sections.intellectual.yourRightItems.0">Puedes usar los análisis para fines educativos</li>
+                            <li data-key="terms.sections.intellectual.yourRightItems.1">Puedes compartir resultados con familiares</li>
+                            <li data-key="terms.sections.intellectual.yourRightItems.2">Conservas derechos sobre tus fotografías originales</li>
+                        </ul>
+
+                        <div class="highlight">
+                            <strong data-key="terms.sections.intellectual.limitations">Limitaciones:</strong> <span data-key="terms.sections.intellectual.limitationsText">No puedes reproducir, distribuir o crear obras derivadas de nuestra aplicación sin permiso explícito.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legal-section" data-section="privacy">
+                    <h2 class="section-title" data-key="terms.sections.privacy.title">
+                        <i class="fas fa-shield-alt"></i>
+                        Privacidad y Datos
+                    </h2>
+                    <div class="section-content">
+                        <p data-key="terms.sections.privacy.content">El uso de SapiSabe está sujeto a nuestra Política de Privacidad, que forma parte integral de estos términos. Al usar la aplicación, aceptas:</p>
+                        
+                        <ul>
+                            <li data-key="terms.sections.privacy.acceptanceItems.0">La recopilación y procesamiento de datos según nuestra política</li>
+                            <li data-key="terms.sections.privacy.acceptanceItems.1">El uso de cookies y tecnologías similares</li>
+                            <li data-key="terms.sections.privacy.acceptanceItems.2">La transferencia de datos a proveedores de servicios</li>
+                            <li data-key="terms.sections.privacy.acceptanceItems.3">El almacenamiento seguro de información personal</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section" data-section="limitation">
+                    <h2 class="section-title" data-key="terms.sections.limitation.title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Limitación de Responsabilidad
+                    </h2>
+                    <div class="section-content">
+                        <h3 data-key="terms.sections.limitation.warranty">Exclusiones de Garantía:</h3>
+                        <ul>
+                            <li data-key="terms.sections.limitation.warrantyItems.0">La aplicación se proporciona "tal como está"</li>
+                            <li data-key="terms.sections.limitation.warrantyItems.1">No garantizamos disponibilidad continua del servicio</li>
+                            <li data-key="terms.sections.limitation.warrantyItems.2">Los análisis de IA pueden contener errores</li>
+                            <li data-key="terms.sections.limitation.warrantyItems.3">No somos responsables por decisiones basadas en los análisis</li>
+                        </ul>
+
+                        <h3 data-key="terms.sections.limitation.damages">Limitación de Daños:</h3>
+                        <ul>
+                            <li data-key="terms.sections.limitation.damageItems.0">No seremos responsables por daños indirectos</li>
+                            <li data-key="terms.sections.limitation.damageItems.1">La responsabilidad total está limitada al monto pagado por el servicio</li>
+                            <li data-key="terms.sections.limitation.damageItems.2">No cubrimos daños por uso incorrecto de la aplicación</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section" data-section="termination">
+                    <h2 class="section-title" data-key="terms.sections.termination.title">
+                        <i class="fas fa-ban"></i>
+                        Terminación
+                    </h2>
+                    <div class="section-content">
+                        <h3 data-key="terms.sections.termination.reasons">Podemos terminar tu acceso si:</h3>
+                        <ul>
+                            <li data-key="terms.sections.termination.reasonItems.0">Violas estos términos de uso</li>
+                            <li data-key="terms.sections.termination.reasonItems.1">Usas la aplicación de manera inapropiada</li>
+                            <li data-key="terms.sections.termination.reasonItems.2">Intentas comprometer la seguridad</li>
+                            <li data-key="terms.sections.termination.reasonItems.3">No pagas las tarifas aplicables</li>
+                        </ul>
+
+                        <h3 data-key="terms.sections.termination.effects">Efectos de la Terminación:</h3>
+                        <ul>
+                            <li data-key="terms.sections.termination.effectItems.0">Pérdida inmediata del acceso a la aplicación</li>
+                            <li data-key="terms.sections.termination.effectItems.1">Eliminación de datos según nuestra política de privacidad</li>
+                            <li data-key="terms.sections.termination.effectItems.2">Cesación de todos los derechos de licencia</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section" data-section="law">
+                    <h2 class="section-title" data-key="terms.sections.law.title">
+                        <i class="fas fa-gavel"></i>
+                        Ley Aplicable
+                    </h2>
+                    <div class="section-content">
+                        <p data-key="terms.sections.law.content">Estos términos se rigen por las leyes de España. Cualquier disputa será resuelta en los tribunales competentes de Madrid, España.</p>
+                        
+                        <h3 data-key="terms.sections.law.disputes">Resolución de Disputas:</h3>
+                        <ul>
+                            <li data-key="terms.sections.law.disputeItems.0">Intentaremos resolver disputas amistosamente</li>
+                            <li data-key="terms.sections.law.disputeItems.1">En caso de no acuerdo, se aplicará la ley española</li>
+                            <li data-key="terms.sections.law.disputeItems.2">Los tribunales de Madrid tendrán jurisdicción exclusiva</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section" data-section="changes">
+                    <h2 class="section-title" data-key="terms.sections.changes.title">
+                        <i class="fas fa-edit"></i>
+                        Modificaciones
+                    </h2>
+                    <div class="section-content">
+                        <p data-key="terms.sections.changes.content">Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación.</p>
+                        
+                        <h3 data-key="terms.sections.changes.notification">Notificación de Cambios:</h3>
+                        <ul>
+                            <li data-key="terms.sections.changes.notificationItems.0">Te notificaremos cambios significativos por email</li>
+                            <li data-key="terms.sections.changes.notificationItems.1">Los cambios se publicarán en esta página</li>
+                            <li data-key="terms.sections.changes.notificationItems.2">El uso continuado constituye aceptación de los nuevos términos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="legal-section">
+                    <h2 class="section-title" data-key="terms.sections.contact.title">
+                        <i class="fas fa-question-circle"></i>
+                        Contacto
+                    </h2>
+                    <div class="section-content">
+                        <p data-key="terms.sections.contact.description">Si tienes preguntas sobre estos términos, contáctanos:</p>
+                        
+                        <div class="contact-info">
+                            <h3 data-key="terms.sections.contact.info"><i class="fas fa-envelope"></i> Información de Contacto</h3>
+                            <p data-key="terms.sections.contact.email"><strong>Email:</strong> legal@sapisabe.com</p>
+                            <p data-key="terms.sections.contact.subject"><strong>Asunto:</strong> Consulta sobre Términos de Uso</p>
+                            <p data-key="terms.sections.contact.response"><strong>Tiempo de respuesta:</strong> 72 horas hábiles</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Include legal translations -->
+    <script src="../js/legal-translations.js"></script>
+    
+    <script>
+        // Función para traducir usando las claves de datos
+        function translateContent() {
+            const lang = getCurrentLanguageLegal();
+            const t = legalTranslations[lang];
+            
+            if (!t || !t.terms) return;
+            
+            // Actualizar meta tags
+            document.title = t.terms.title;
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) metaDescription.setAttribute('content', t.terms.metaDescription);
+            
+            // Traducir elementos con data-key
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                const translation = getNestedTranslation(t, key);
+                if (translation) {
+                    if (element.tagName === 'TITLE' || element.tagName === 'META') {
+                        // Ya manejado arriba
+                        return;
+                    }
+                    element.textContent = translation;
+                }
+            });
+            
+            // Actualizar idioma HTML
+            document.documentElement.lang = lang;
+        }
+        
+        function getNestedTranslation(obj, path) {
+            return path.split('.').reduce((current, key) => {
+                if (current && typeof current === 'object') {
+                    // Manejar arrays con índices
+                    if (!isNaN(key)) {
+                        return current[parseInt(key)];
+                    }
+                    return current[key];
+                }
+                return undefined;
+            }, obj);
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            translateContent();
+            initLegalLanguageSelector();
+        });
+        
+        // Sobreescribir la función de cambio de idioma para usar la nueva función
+        const originalChangeLanguage = window.changeLanguageLegal;
+        window.changeLanguageLegal = function(lang) {
+            localStorage.setItem('preferredLanguage', lang);
+            translateContent();
+        };
+    </script>
+</body>
+</html> 
