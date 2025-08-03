@@ -124,6 +124,36 @@ const translations = {
             cookies: "Cookies",
             copyright: "© 2024 SapiSabe. Todos los derechos reservados.",
             developed: "Desarrollado con ❤️ para el futuro de la educación infantil"
+        },
+
+        // Email Confirmation Page
+        emailConfirmation: {
+            title: "¡Email Confirmado!",
+            subtitle: "¡Bienvenido a SapiSabe! 🎉",
+            message: "¡Perfecto! Tu cuenta está lista para comenzar las aventuras más increíbles. Sapi te está esperando para explorar juntos un mundo lleno de descubrimientos mágicos y aprendizaje súper divertido.",
+            nextSteps: {
+                title: "🚀 ¿Qué sigue ahora?",
+                description: "¡Ya puedes volver a la app SapiSabe! Crea perfiles personalizados para cada niño de tu familia y comienza a explorar el mundo de forma totalmente personalizada. Cada foto será una aventura única adaptada a la edad y curiosidad de cada pequeño explorador."
+            },
+            features: {
+                feature1: {
+                    title: "Explora con Fotos",
+                    description: "Fotografía cualquier cosa y descubre historias increíbles"
+                },
+                feature2: {
+                    title: "IA Personalizada",
+                    description: "Explicaciones adaptadas a tu edad y nivel de curiosidad"
+                },
+                feature3: {
+                    title: "100% Seguro",
+                    description: "Contenido educativo verificado y libre de anuncios"
+                }
+            },
+            buttons: {
+                download: "Abrir SapiSabe",
+                explore: "Conocer Más",
+                back: "Volver al Inicio"
+            }
         }
     },
     
@@ -252,6 +282,36 @@ const translations = {
             cookies: "Cookies",
             copyright: "© 2024 SapiSabe. All rights reserved.",
             developed: "Developed with ❤️ for the future of children's education"
+        },
+
+        // Email Confirmation Page
+        emailConfirmation: {
+            title: "Email Confirmed!",
+            subtitle: "Welcome to SapiSabe! 🎉",
+            message: "Perfect! Your account is ready to begin the most incredible adventures. Sapi is waiting for you to explore together a world full of magical discoveries and super fun learning.",
+            nextSteps: {
+                title: "🚀 What's next?",
+                description: "You can now return to the SapiSabe app! Create personalized profiles for each child in your family and start exploring the world in a completely personalized way. Every photo will be a unique adventure adapted to each little explorer's age and curiosity."
+            },
+            features: {
+                feature1: {
+                    title: "Explore with Photos",
+                    description: "Photograph anything and discover incredible stories"
+                },
+                feature2: {
+                    title: "Personalized AI",
+                    description: "Explanations adapted to your age and level of curiosity"
+                },
+                feature3: {
+                    title: "100% Safe",
+                    description: "Verified educational content and ad-free"
+                }
+            },
+            buttons: {
+                download: "Open SapiSabe",
+                explore: "Learn More",
+                back: "Back to Home"
+            }
         }
     },
     
@@ -380,6 +440,36 @@ const translations = {
             cookies: "Cookies",
             copyright: "© 2024 SapiSabe. Tous droits réservés.",
             developed: "Développé avec ❤️ pour l'avenir de l'éducation enfantine"
+        },
+
+        // Email Confirmation Page
+        emailConfirmation: {
+            title: "Email Confirmé!",
+            subtitle: "Bienvenue chez SapiSabe! 🎉",
+            message: "Parfait! Ton compte est prêt pour commencer les aventures les plus incroyables. Sapi t'attend pour explorer ensemble un monde plein de découvertes magiques et d'apprentissage super amusant.",
+            nextSteps: {
+                title: "🚀 Et maintenant?",
+                description: "Tu peux maintenant retourner dans l'app SapiSabe! Crée des profils personnalisés pour chaque enfant de ta famille et commence à explorer le monde de façon totalement personnalisée. Chaque photo sera une aventure unique adaptée à l'âge et à la curiosité de chaque petit explorateur."
+            },
+            features: {
+                feature1: {
+                    title: "Explore avec Photos",
+                    description: "Photographie n'importe quoi et découvre des histoires incroyables"
+                },
+                feature2: {
+                    title: "IA Personnalisée",
+                    description: "Explications adaptées à ton âge et niveau de curiosité"
+                },
+                feature3: {
+                    title: "100% Sûr",
+                    description: "Contenu éducatif vérifié et sans publicités"
+                }
+            },
+            buttons: {
+                download: "Ouvrir SapiSabe",
+                explore: "En Savoir Plus",
+                back: "Retour à l'Accueil"
+            }
         }
     }
 };
