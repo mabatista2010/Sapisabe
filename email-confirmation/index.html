@@ -593,7 +593,7 @@
                 </div>
 
                 <div class="action-buttons">
-                    <a href="../index.html#descarga" class="cta-button" id="downloadButton">
+                    <a href="#" class="cta-button" id="downloadButton" onclick="openApp()">
                         <i class="fas fa-mobile-alt"></i>
                         <span id="downloadButtonText">Abrir SapiSabe</span>
                     </a>
@@ -608,6 +608,8 @@
 
     <!-- Include translations -->
     <script src="../js/translations.js"></script>
+    <!-- Include app opener -->
+    <script src="../app-opener.js"></script>
     
     <script>
         // Email confirmation specific translations
@@ -787,6 +789,135 @@
             document.addEventListener('click', (e) => {
                 if (!currentLanguage.contains(e.target) && !languageDropdown.contains(e.target)) {
                     languageDropdown.classList.remove('active');
+                }
+            });
+        }
+
+        // Función para abrir la app SapiSabe
+        function openApp() {
+            // Detectar si estamos en móvil
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // Intentar abrir la app usando URL schemes
+                const appUrls = [
+                    'sapisabe://', // URL scheme personalizado (si lo tienes configurado)
+                    'com.sapisabe.app://', // URL scheme basado en el bundle ID
+                    'https://sapisabe.com/app', // URL de deep linking
+                    'https://sapisabe.com' // URL de respaldo
+                ];
+                
+                // Intentar abrir la app
+                let appOpened = false;
+                
+                // Función para intentar abrir la app
+                function tryOpenApp(urlIndex = 0) {
+                    if (urlIndex >= appUrls.length) {
+                        // Si ninguna funciona, redirigir a la página de descarga
+                        window.location.href = '../index.html#descarga';
+                        return;
+                    }
+                    
+                    const url = appUrls[urlIndex];
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    
+                    // Intentar abrir la app
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // Verificar si la app se abrió (timeout de 2 segundos)
+                    setTimeout(() => {
+                        if (!appOpened) {
+                            // Si no se abrió, intentar con la siguiente URL
+                            tryOpenApp(urlIndex + 1);
+                        }
+                    }, 2000);
+                }
+                
+                // Detectar si la app se abrió (cuando la página pierde el foco)
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        appOpened = true;
+                    }
+                });
+                
+                // Detectar si la app se abrió (cuando la ventana pierde el foco)
+                window.addEventListener('blur', () => {
+                    appOpened = true;
+                });
+                
+                // Comenzar intentos
+                tryOpenApp();
+                
+            } else {
+                // En desktop, mostrar QR code o redirigir a la página de descarga
+                showQRCode();
+            }
+        }
+        
+        // Función para mostrar QR code en desktop
+        function showQRCode() {
+            // Crear modal con QR code
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                backdrop-filter: blur(10px);
+            `;
+            
+            const modalContent = document.createElement('div');
+            modalContent.style.cssText = `
+                background: white;
+                padding: 30px;
+                border-radius: 20px;
+                text-align: center;
+                max-width: 400px;
+                margin: 20px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            `;
+            
+            modalContent.innerHTML = `
+                <h3 style="color: #1e293b; margin-bottom: 20px; font-size: 1.5rem;">📱 Escanea para abrir SapiSabe</h3>
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin: 20px 0;">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">📱</div>
+                    <p style="color: #64748b; margin-bottom: 15px;">Escanea este código QR con tu móvil para abrir SapiSabe directamente</p>
+                    <div style="background: #6366f1; color: white; padding: 10px 20px; border-radius: 8px; display: inline-block; font-weight: 600;">
+                        Abrir SapiSabe
+                    </div>
+                </div>
+                <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 20px;">
+                    O visita <a href="https://sapisabe.com" style="color: #6366f1; text-decoration: none;">sapisabe.com</a> en tu móvil
+                </p>
+                <button onclick="this.closest('.modal').remove()" style="
+                    background: #6366f1;
+                    color: white;
+                    border: none;
+                    padding: 12px 24px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: 600;
+                ">Cerrar</button>
+            `;
+            
+            modal.className = 'modal';
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+            
+            // Cerrar modal al hacer clic fuera
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
                 }
             });
         }
