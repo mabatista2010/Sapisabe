@@ -100,19 +100,19 @@ const translations = {
         
         // Download Section
         download: {
-            badge: "¡Próximamente!",
-            title: "¡La Aventura Comienza Pronto!",
-            subtitle: "Estamos dando los últimos toques mágicos para que tengas la mejor experiencia de aprendizaje. ¡Prepárate para explorar como nunca! 🚀",
+            badge: "¡Ya Disponible!",
+            title: "¡La Aventura Ya Está Aquí!",
+            subtitle: "SapiSabe ya está disponible en App Store. ¡Descarga la app y comienza tu aventura de aprendizaje mágica! 🚀",
             comingSoon: {
-                title: "🎉 ¡Súper Pronto en Tu Teléfono!",
-                description: "SapiSabe estará disponible GRATIS en todas las tiendas de aplicaciones. ¡3 exploraciones diarias sin registro, infinitas al crear tu cuenta familiar!",
+                title: "🎉 ¡Ya Disponible en App Store!",
+                description: "SapiSabe ya está disponible GRATIS en App Store. ¡3 exploraciones diarias sin registro, infinitas al crear tu cuenta familiar!",
                 plan: {
                     title: "Plan Súper Generoso",
                     free: "✨ 3 aventuras diarias GRATIS para probar sin compromiso",
                     unlimited: "🚀 Exploraciones ILIMITADAS registrándote gratis con tu familia"
                 }
             },
-            appStore: "Próximamente en",
+            appStore: "Disponible en",
             googlePlay: "Muy pronto en"
         },
         
@@ -258,19 +258,19 @@ const translations = {
         
         // Download Section
         download: {
-            badge: "Coming Soon!",
-            title: "The Adventure Begins Soon!",
-            subtitle: "We're putting the final magical touches so you have the best learning experience. Get ready to explore like never before! 🚀",
+            badge: "Now Available!",
+            title: "The Adventure is Here!",
+            subtitle: "SapiSabe is now available on App Store. Download the app and start your magical learning adventure! 🚀",
             comingSoon: {
-                title: "🎉 Super Soon on Your Phone!",
-                description: "SapiSabe will be available FREE on all app stores. 3 daily explorations without registration, unlimited when creating your family account!",
+                title: "🎉 Now Available on App Store!",
+                description: "SapiSabe is now available FREE on App Store. 3 daily explorations without registration, unlimited when creating your family account!",
                 plan: {
                     title: "Super Generous Plan",
                     free: "✨ 3 FREE daily adventures to try without commitment",
                     unlimited: "🚀 UNLIMITED explorations when registering for free with your family"
                 }
             },
-            appStore: "Coming soon on",
+            appStore: "Available on",
             googlePlay: "Very soon on"
         },
         
@@ -416,19 +416,19 @@ const translations = {
         
         // Download Section
         download: {
-            badge: "Bientôt Disponible!",
-            title: "L'Aventure Commence Bientôt!",
-            subtitle: "Nous mettons les dernières touches magiques pour que tu aies la meilleure expérience d'apprentissage. Prépare-toi à explorer comme jamais! 🚀",
+            badge: "Maintenant Disponible!",
+            title: "L'Aventure est Ici!",
+            subtitle: "SapiSabe est maintenant disponible sur App Store. Télécharge l'app et commence ton aventure d'apprentissage magique! 🚀",
             comingSoon: {
-                title: "🎉 Super Bientôt sur Ton Téléphone!",
-                description: "SapiSabe sera disponible GRATUITEMENT sur tous les stores d'applications. 3 explorations quotidiennes sans inscription, illimitées en créant ton compte familial!",
+                title: "🎉 Maintenant Disponible sur App Store!",
+                description: "SapiSabe est maintenant disponible GRATUITEMENT sur App Store. 3 explorations quotidiennes sans inscription, illimitées en créant ton compte familial!",
                 plan: {
                     title: "Plan Super Généreux",
                     free: "✨ 3 aventures quotidiennes GRATUITES pour essayer sans engagement",
                     unlimited: "🚀 Explorations ILLIMITÉES en s'inscrivant gratuitement avec ta famille"
                 }
             },
-            appStore: "Bientôt sur",
+            appStore: "Disponible sur",
             googlePlay: "Très bientôt sur"
         },
         
