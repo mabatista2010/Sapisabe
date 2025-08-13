@@ -110,7 +110,7 @@ class SapiSabeAppOpener {
      * Fallback a la página de descarga
      */
     fallbackToDownload() {
-        window.location.href = '../index.html#descarga';
+        window.location.href = '../app/auth/login';
     }
 
     /**
@@ -209,7 +209,7 @@ class SapiSabeAppOpener {
                 " onmouseover="this.style.background='#5b5bd6'" onmouseout="this.style.background='#6366f1'">
                     🌐 Visitar SapiSabe
                 </a>
-                <a href="../index.html#descarga" style="
+                <a href="../app/auth/login" style="
                     display: inline-block;
                     background: #f1f5f9;
                     color: #6366f1;
@@ -220,7 +220,7 @@ class SapiSabeAppOpener {
                     margin: 0 10px;
                     transition: all 0.3s ease;
                 " onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">
-                    📥 Descargar App
+                    🔐 Ir al Login
                 </a>
             </div>
             
