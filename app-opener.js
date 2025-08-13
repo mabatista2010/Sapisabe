@@ -6,8 +6,11 @@
 class SapiSabeAppOpener {
     constructor() {
         this.appUrls = [
+            'sapisabe://login', // URL scheme para login de la app
             'sapisabe://', // URL scheme personalizado
+            'com.sapisabe.app://login', // URL scheme para login basado en bundle ID
             'com.sapisabe.app://', // URL scheme basado en bundle ID
+            'https://sapisabe.com/app/auth/login', // Deep link a login de la app
             'https://sapisabe.com/app', // Deep link
             'https://sapisabe.com' // URL de respaldo
         ];
@@ -110,7 +113,7 @@ class SapiSabeAppOpener {
      * Fallback a la página de descarga
      */
     fallbackToDownload() {
-        window.location.href = '../app/auth/login';
+        window.location.href = '../index.html#descarga';
     }
 
     /**
@@ -209,7 +212,7 @@ class SapiSabeAppOpener {
                 " onmouseover="this.style.background='#5b5bd6'" onmouseout="this.style.background='#6366f1'">
                     🌐 Visitar SapiSabe
                 </a>
-                <a href="../app/auth/login" style="
+                <a href="../index.html#descarga" style="
                     display: inline-block;
                     background: #f1f5f9;
                     color: #6366f1;
@@ -220,7 +223,7 @@ class SapiSabeAppOpener {
                     margin: 0 10px;
                     transition: all 0.3s ease;
                 " onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">
-                    🔐 Ir al Login
+                    📥 Descargar App
                 </a>
             </div>
             
