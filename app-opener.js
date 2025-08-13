@@ -6,11 +6,11 @@
 class SapiSabeAppOpener {
     constructor() {
         this.appUrls = [
-            'sapisabe://login', // URL scheme para login de la app
+            'sapisabe://auth/login', // URL scheme para auth/login de la app
             'sapisabe://', // URL scheme personalizado
-            'com.sapisabe.app://login', // URL scheme para login basado en bundle ID
+            'com.sapisabe.app://auth/login', // URL scheme para auth/login basado en bundle ID
             'com.sapisabe.app://', // URL scheme basado en bundle ID
-            'https://sapisabe.com/app/auth/login', // Deep link a login de la app
+            'https://sapisabe.com/app/auth/login', // Deep link a auth/login de la app
             'https://sapisabe.com/app', // Deep link
             'https://sapisabe.com' // URL de respaldo
         ];
