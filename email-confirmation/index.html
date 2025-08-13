@@ -593,7 +593,7 @@
                 </div>
 
                 <div class="action-buttons">
-                    <a href="../index.html#descarga" class="cta-button" id="downloadButton">
+                    <a href="#" class="cta-button" id="downloadButton" onclick="openSapiSabeApp(event)">
                         <i class="fas fa-mobile-alt"></i>
                         <span id="downloadButtonText">Abrir SapiSabe</span>
                     </a>
@@ -791,6 +791,128 @@
             });
         }
 
+        // Deep Linking inteligente para abrir la app SapiSabe
+        function openSapiSabeApp(event) {
+            event.preventDefault();
+            
+            // Configuración de Deep Linking
+            const deepLinkConfig = {
+                // URL schemes personalizados (deben coincidir con los configurados en la app)
+                appScheme: 'sapisabe://',
+                // URLs de las tiendas
+                stores: {
+                    ios: 'https://apps.apple.com/app/sapisabe/id6748133807',
+                    android: 'https://play.google.com/store/apps/details?id=com.sapisabe.app',
+                    fallback: 'https://sapisabe.com'
+                },
+                // URLs de respaldo para diferentes escenarios
+                fallbacks: {
+                    ios: 'https://sapisabe.com/app-store',
+                    android: 'https://sapisabe.com/play-store',
+                    desktop: '../index.html#descarga'
+                }
+            };
+            
+            // Detectar plataforma
+            const platform = detectPlatform();
+            
+            if (platform === 'desktop') {
+                // En desktop, mostrar QR code o redirigir
+                showDesktopMessage();
+                return;
+            }
+            
+            // En móvil, intentar abrir la app
+            attemptToOpenApp(platform, deepLinkConfig);
+        }
+        
+        // Detectar la plataforma del usuario
+        function detectPlatform() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            
+            if (/iphone|ipad|ipod/.test(userAgent)) {
+                return 'ios';
+            } else if (/android/.test(userAgent)) {
+                return 'android';
+            } else {
+                return 'desktop';
+            }
+        }
+        
+        // Intentar abrir la app con múltiples estrategias
+        function attemptToOpenApp(platform, config) {
+            const appUrl = config.appScheme + 'open';
+            const storeUrl = config.stores[platform];
+            const fallbackUrl = config.fallbacks[platform];
+            
+            let appOpened = false;
+            let fallbackTriggered = false;
+            
+            // Estrategia 1: Intentar abrir directamente
+            try {
+                window.location.href = appUrl;
+                appOpened = true;
+            } catch (e) {
+                console.log('Error al abrir app directamente:', e);
+            }
+            
+            // Estrategia 2: Usar iframe oculto (para iOS)
+            if (platform === 'ios' && !appOpened) {
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = appUrl;
+                document.body.appendChild(iframe);
+                
+                // Limpiar iframe después de un tiempo
+                setTimeout(() => {
+                    if (iframe.parentNode) {
+                        iframe.parentNode.removeChild(iframe);
+                    }
+                }, 3000);
+            }
+            
+            // Estrategia 3: Usar window.open como respaldo
+            if (!appOpened) {
+                const popup = window.open(appUrl, '_blank');
+                
+                // Si el popup se bloqueó, intentar con la tienda
+                if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+                    setTimeout(() => {
+                        if (!fallbackTriggered) {
+                            fallbackTriggered = true;
+                            window.location.href = storeUrl;
+                        }
+                    }, 1500);
+                }
+            }
+            
+            // Estrategia 4: Fallback final después de un tiempo
+            setTimeout(() => {
+                if (!fallbackTriggered) {
+                    fallbackTriggered = true;
+                    window.location.href = storeUrl;
+                }
+            }, 3000);
+        }
+        
+        // Mostrar mensaje en desktop
+        function showDesktopMessage() {
+            const message = `
+                📱 Para abrir SapiSabe:
+                
+                1. Escanea el código QR desde tu dispositivo móvil
+                2. O visita la tienda de aplicaciones:
+                   • iOS: App Store
+                   • Android: Google Play Store
+                
+                ¿Quieres ir a la página de descarga?
+            `;
+            
+            if (confirm(message)) {
+                window.location.href = '../index.html#descarga';
+            }
+        }
+        
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', () => {
             initEmailConfirmationLanguageSelector();

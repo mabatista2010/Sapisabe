@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirma tu cuenta - SapiSabe</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .email-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .logo {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .greeting {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .button:hover {
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .link-fallback {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-top: 20px;
+            word-break: break-all;
+        }
+
+        .link-fallback a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        .footer {
+            background: #f1f5f9;
+            padding: 20px 30px;
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: #6366f1;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">📸</div>
+            <h1 class="title">SapiSabe</h1>
+            <p class="subtitle">Tu Colega Explorador con IA</p>
+        </div>
+
+        <!-- Contenido -->
+        <div class="content">
+            <h2 class="greeting">¡Hola Explorador! 👋</h2>
+            
+            <p class="message">
+                ¡Bienvenido a SapiSabe! Estamos emocionados de que te unas a nuestra aventura de aprendizaje. 
+                Para comenzar a explorar el mundo con Sapi, necesitamos confirmar tu dirección de correo electrónico.
+            </p>
+
+            <p class="message">
+                Haz clic en el botón de abajo para confirmar tu cuenta:
+            </p>
+
+            <div style="text-align: center;">
+                <a href="{{ .ConfirmationURL }}" class="button">
+                    ✨ Confirmar mi cuenta ✨
+                </a>
+            </div>
+
+            <p class="link-fallback">
+                Si no puedes hacer clic en el botón, copia y pega este enlace:<br>
+                <a href="{{ .ConfirmationURL }}">{{ .ConfirmationURL }}</a>
+            </p>
+
+            <p class="message">
+                Una vez confirmes tu cuenta, podrás crear perfiles personalizados para cada niño 
+                de tu familia y comenzar a explorar el mundo de forma totalmente personalizada.
+            </p>
+
+            <p class="message" style="font-weight: 600; color: #1e293b;">
+                ¡Nos vemos en la app! 🎉<br>
+                El equipo de SapiSabe
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                Este email fue enviado a {{ .Email }}. Si no solicitaste esta confirmación, 
+                puedes ignorar este mensaje de forma segura.
+            </p>
+            
+            <div class="footer-links">
+                <a href="https://sapisabe.com">Visitar SapiSabe</a>
+                <a href="https://sapisabe.com/privacy">Privacidad</a>
+                <a href="https://sapisabe.com/terms">Términos</a>
+                <a href="mailto:support@sapisabe.com">Soporte</a>
+            </div>
+
+            <p style="margin-top: 15px; font-size: 12px;">
+                © 2024 SapiSabe. Todos los derechos reservados.
+            </p>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirma tu cuenta - SapiSabe</title>
+    <style>
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+        }
+
+        /* Contenedor principal */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header con gradiente */
+        .email-header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #00d4ff 100%);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .email-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .logo-icon {
+            font-size: 40px;
+            color: white;
+        }
+
+        .header-title {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            font-weight: 400;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Contenido principal */
+        .email-content {
+            padding: 40px 30px;
+        }
+
+        .greeting {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        /* Botón de confirmación */
+        .confirm-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            text-decoration: none;
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .confirm-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Características destacadas */
+        .features {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .features-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffd93d 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .feature-description {
+            font-size: 12px;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        /* Footer */
+        .email-footer {
+            background: #1e293b;
+            color: #94a3b8;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #6366f1;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin: 0 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #6366f1;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 10px;
+                border-radius: 12px;
+            }
+
+            .email-header {
+                padding: 30px 20px;
+            }
+
+            .email-content {
+                padding: 30px 20px;
+            }
+
+            .header-title {
+                font-size: 24px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Estilos para clientes de email que no soportan CSS moderno */
+        .fallback {
+            background-color: #6366f1 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="email-header">
+            <div class="logo-container">
+                <div class="logo">
+                    <span class="logo-icon">📸</span>
+                </div>
+                <h1 class="header-title">SapiSabe</h1>
+                <p class="header-subtitle">Tu Colega Explorador con IA</p>
+            </div>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="email-content">
+            <h2 class="greeting">¡Hola Explorador! 👋</h2>
+            
+            <p class="message">
+                ¡Bienvenido a la familia SapiSabe! Estamos súper emocionados de que te unas a nuestra 
+                aventura de aprendizaje. Para comenzar a explorar el mundo con Sapi, necesitamos 
+                confirmar tu dirección de correo electrónico.
+            </p>
+
+            <p class="message">
+                Haz clic en el botón de abajo para confirmar tu cuenta y desbloquear todas las 
+                aventuras mágicas que te esperan:
+            </p>
+
+            <div style="text-align: center;">
+                <a href="{{ .ConfirmationURL }}" class="confirm-button">
+                    ✨ Confirmar mi cuenta ✨
+                </a>
+            </div>
+
+            <p class="message" style="font-size: 14px; color: #94a3b8;">
+                Si no puedes hacer clic en el botón, copia y pega este enlace en tu navegador:<br>
+                <a href="{{ .ConfirmationURL }}" style="color: #6366f1; word-break: break-all;">{{ .ConfirmationURL }}</a>
+            </p>
+
+            <!-- Características destacadas -->
+            <div class="features">
+                <h3 class="features-title">🚀 ¿Qué te espera en SapiSabe?</h3>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">📸</div>
+                        <div class="feature-title">Explora con Fotos</div>
+                        <div class="feature-description">Fotografía cualquier cosa y descubre historias increíbles</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🧠</div>
+                        <div class="feature-title">IA Personalizada</div>
+                        <div class="feature-description">Explicaciones adaptadas a tu edad y curiosidad</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🛡️</div>
+                        <div class="feature-title">100% Seguro</div>
+                        <div class="feature-description">Contenido educativo verificado y sin anuncios</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="message">
+                Una vez confirmes tu cuenta, podrás crear perfiles personalizados para cada niño 
+                de tu familia y comenzar a explorar el mundo de forma totalmente personalizada. 
+                ¡Cada foto será una aventura única!
+            </p>
+
+            <p class="message" style="font-weight: 600; color: #1e293b;">
+                ¡Nos vemos en la app! 🎉<br>
+                El equipo de SapiSabe
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="email-footer">
+            <p class="footer-text">
+                Este email fue enviado a {{ .Email }}. Si no solicitaste esta confirmación, 
+                puedes ignorar este mensaje de forma segura.
+            </p>
+            
+            <div class="footer-links">
+                <a href="https://sapisabe.com" class="footer-link">Visitar SapiSabe</a>
+                <a href="https://sapisabe.com/privacy" class="footer-link">Privacidad</a>
+                <a href="https://sapisabe.com/terms" class="footer-link">Términos</a>
+                <a href="mailto:support@sapisabe.com" class="footer-link">Soporte</a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://twitter.com/SapiSabe" class="social-link" style="text-decoration: none; color: white; display: flex; align-items: center; justify-content: center;">🐦</a>
+                <a href="https://instagram.com/sapisabe" class="social-link" style="text-decoration: none; color: white; display: flex; align-items: center; justify-content: center;">📷</a>
+                <a href="https://facebook.com/SapiSabe" class="social-link" style="text-decoration: none; color: white; display: flex; align-items: center; justify-content: center;">📘</a>
+            </div>
+
+            <p class="footer-text" style="margin-top: 20px; font-size: 12px;">
+                © 2024 SapiSabe. Todos los derechos reservados.
+            </p>
+        </div>
+    </div>
+</body>
+</html> 
