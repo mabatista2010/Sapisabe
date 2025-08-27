@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SapiSabe - Análisis Educativo con IA</title>
+    
+    <!-- Meta Tags para SEO y Redes Sociales -->
+    <meta name="description" content="Descubre lo que SapiSabe encontró en esta imagen. Análisis educativo potenciado por IA para niños de 3-8 años.">
+    
+    <!-- Open Graph Meta Tags para WhatsApp, Facebook, etc -->
+    <meta property="og:title" content="¡Mira este descubrimiento en SapiSabe!">
+    <meta property="og:description" content="Análisis educativo interactivo para niños curiosos">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="SapiSabe">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="¡Mira este descubrimiento en SapiSabe!">
+    <meta name="twitter:description" content="Análisis educativo interactivo para niños curiosos">
+    <meta name="twitter:image" content="">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .loading-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: none;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #f0f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .analysis-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            color: #333;
+        }
+        
+        .analysis-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            background: #f0f0f0;
+        }
+        
+        .analysis-content {
+            padding: 30px;
+        }
+        
+        .analysis-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .kid-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .kid-info h2 {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .kid-info p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .analysis-text {
+            margin: 30px 0;
+            line-height: 1.8;
+            font-size: 1.1em;
+            color: #444;
+        }
+        
+        .analysis-section {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .analysis-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .analysis-section p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .cta-section p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: white;
+            color: #667eea;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .error-container {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .error-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .error-container h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        
+        .error-container p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .feature h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .feature p {
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .analysis-content {
+                padding: 20px;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+            }
+            
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading State -->
+    <div id="loadingContainer" class="loading-container">
+        <div class="loader"></div>
+        <p style="margin-top: 20px; opacity: 0.8;">Cargando análisis...</p>
+    </div>
+    
+    <!-- Main Container -->
+    <div id="mainContainer" class="container">
+        <!-- Success State -->
+        <div id="successContent">
+            <div class="header">
+                <div class="logo">🦉</div>
+                <h1>SapiSabe</h1>
+                <p>Descubrimiento educativo con IA para mentes curiosas</p>
+            </div>
+            
+            <div class="analysis-card">
+                <img id="analysisImage" class="analysis-image" src="" alt="Imagen analizada">
+                
+                <div class="analysis-content">
+                    <div class="analysis-header">
+                        <div class="kid-avatar" id="kidAvatar">👦</div>
+                        <div class="kid-info">
+                            <h2 id="kidName">Explorador</h2>
+                            <p id="analysisDate">Fecha del análisis</p>
+                        </div>
+                    </div>
+                    
+                    <div id="analysisText" class="analysis-text">
+                        <!-- El contenido del análisis se insertará aquí -->
+                    </div>
+                    
+                    <div class="cta-section">
+                        <h3>¿Quieres que tu hijo explore el mundo con IA?</h3>
+                        <p>Descarga SapiSabe y transforma cada foto en una aventura de aprendizaje</p>
+                        
+                        <div class="download-buttons">
+                            <a href="https://apps.apple.com/app/sapisabe/id6670415807" class="download-btn" target="_blank">
+                                <span>📱</span>
+                                <span>App Store</span>
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.miguelBatista.SapiSabe" class="download-btn" target="_blank">
+                                <span>🤖</span>
+                                <span>Google Play</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h4>Personalizado por edad</h4>
+                    <p>Respuestas adaptadas para niños de 3-8 años</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔊</div>
+                    <h4>Audio narrado</h4>
+                    <p>Todas las respuestas pueden ser escuchadas</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h4>Multi-idioma</h4>
+                    <p>Disponible en español, inglés y francés</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                    <h4>Perfiles familiares</h4>
+                    <p>Múltiples niños en una sola cuenta</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Error State -->
+        <div id="errorContent" class="error-container">
+            <div class="error-icon">😢</div>
+            <h2>No pudimos cargar este análisis</h2>
+            <p>El análisis que buscas no está disponible o ha expirado</p>
+            <a href="/" class="download-btn">
+                <span>🏠</span>
+                <span>Ir al inicio</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <script>
+        // Configuración de Supabase
+        const SUPABASE_URL = 'https://xvulvkuztktzuplqfcan.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2dWx2a3V6dGt0enVwbHFmY2FuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjkwMjIwMjEsImV4cCI6MjA0NDU5ODAyMX0.vXnWZwqDPnU4IG8wnLWGPdMnYozLnV1YEJTMXVuCw7c';
+        
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        // Función para obtener parámetros de la URL
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        
+        // Función para formatear el texto del análisis
+        function formatAnalysisText(text) {
+            if (!text) return '';
+            
+            // Dividir por secciones principales
+            const sections = text.split(/(?=🔍|📚|🌟|💡|🎯)/);
+            
+            let formattedHTML = '';
+            
+            sections.forEach(section => {
+                if (section.trim()) {
+                    // Detectar el emoji y título de la sección
+                    const lines = section.trim().split('\n');
+                    const firstLine = lines[0];
+                    const content = lines.slice(1).join('\n').trim();
+                    
+                    if (firstLine.match(/^[🔍📚🌟💡🎯]/)) {
+                        formattedHTML += `
+                            <div class="analysis-section">
+                                <h3>${firstLine}</h3>
+                                <p>${content.replace(/\n/g, '<br>')}</p>
+                            </div>
+                        `;
+                    } else {
+                        formattedHTML += `<p>${section.replace(/\n/g, '<br>')}</p>`;
+                    }
+                }
+            });
+            
+            return formattedHTML || `<p>${text.replace(/\n/g, '<br>')}</p>`;
+        }
+        
+        // Función para formatear la fecha
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            return date.toLocaleDateString('es-ES', options);
+        }
+        
+        // Función principal para cargar el análisis
+        async function loadAnalysis() {
+            const analysisId = getUrlParameter('id');
+            
+            if (!analysisId) {
+                showError();
+                return;
+            }
+            
+            try {
+                // Obtener el análisis de la base de datos
+                const { data: analysis, error } = await supabase
+                    .from('analysis_history')
+                    .select(`
+                        *,
+                        kid_profiles (
+                            name,
+                            age,
+                            avatar_emoji
+                        )
+                    `)
+                    .eq('id', analysisId)
+                    .single();
+                
+                if (error || !analysis) {
+                    console.error('Error loading analysis:', error);
+                    showError();
+                    return;
+                }
+                
+                // Actualizar meta tags para el preview
+                updateMetaTags(analysis);
+                
+                // Mostrar el análisis
+                displayAnalysis(analysis);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showError();
+            }
+        }
+        
+        // Función para actualizar meta tags dinámicamente
+        function updateMetaTags(analysis) {
+            const imageUrl = analysis.image_url || analysis.local_image_uri || '';
+            const description = analysis.brief_description || 'Análisis educativo interactivo para niños curiosos';
+            const kidName = analysis.kid_profiles?.name || 'un pequeño explorador';
+            
+            // Actualizar Open Graph tags
+            document.querySelector('meta[property="og:image"]').content = imageUrl;
+            document.querySelector('meta[property="og:url"]').content = window.location.href;
+            document.querySelector('meta[property="og:description"]').content = `${kidName} descubrió: ${description}`;
+            
+            // Actualizar Twitter Card tags
+            document.querySelector('meta[name="twitter:image"]').content = imageUrl;
+            document.querySelector('meta[name="twitter:description"]').content = `${kidName} descubrió: ${description}`;
+            
+            // Actualizar título de la página
+            document.title = `SapiSabe - ${description.substring(0, 50)}...`;
+        }
+        
+        // Función para mostrar el análisis
+        function displayAnalysis(analysis) {
+            // Ocultar loading
+            document.getElementById('loadingContainer').style.display = 'none';
+            
+            // Mostrar contenedor principal
+            document.getElementById('mainContainer').style.display = 'block';
+            
+            // Configurar imagen
+            const imageUrl = analysis.image_url || analysis.local_image_uri || '';
+            if (imageUrl) {
+                document.getElementById('analysisImage').src = imageUrl;
+            } else {
+                document.getElementById('analysisImage').style.display = 'none';
+            }
+            
+            // Configurar información del niño
+            const kidName = analysis.kid_profiles?.name || 'Explorador';
+            const kidEmoji = analysis.kid_profiles?.avatar_emoji || '👦';
+            
+            document.getElementById('kidAvatar').textContent = kidEmoji;
+            document.getElementById('kidName').textContent = kidName;
+            document.getElementById('analysisDate').textContent = formatDate(analysis.created_at);
+            
+            // Configurar texto del análisis
+            const analysisText = analysis.analysis_result || '';
+            document.getElementById('analysisText').innerHTML = formatAnalysisText(analysisText);
+        }
+        
+        // Función para mostrar error
+        function showError() {
+            document.getElementById('loadingContainer').style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'block';
+            document.getElementById('successContent').style.display = 'none';
+            document.getElementById('errorContent').style.display = 'block';
+        }
+        
+        // Cargar el análisis cuando la página esté lista
+        document.addEventListener('DOMContentLoaded', loadAnalysis);
+    </script>
+</body>
+</html>
