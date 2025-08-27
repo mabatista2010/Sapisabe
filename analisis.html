@@ -544,7 +544,7 @@
             document.getElementById('analysisDate').textContent = formatDate(analysis.created_at);
             
             // Configurar texto del análisis
-            const analysisText = analysis.analysis_result || '';
+            const analysisText = analysis.analysis_response || '';
             document.getElementById('analysisText').innerHTML = formatAnalysisText(analysisText);
         }
         
