@@ -469,7 +469,7 @@
                         kid_profiles (
                             name,
                             age,
-                            avatar_emoji
+                            avatar_url
                         )
                     `)
                     .eq('id', analysisId)
@@ -530,9 +530,16 @@
             
             // Configurar información del niño
             const kidName = analysis.kid_profiles?.name || 'Explorador';
-            const kidEmoji = analysis.kid_profiles?.avatar_emoji || '👦';
+            const avatarUrl = analysis.kid_profiles?.avatar_url;
             
-            document.getElementById('kidAvatar').textContent = kidEmoji;
+            // Si hay URL de avatar, usar imagen, si no usar emoji
+            const kidAvatarEl = document.getElementById('kidAvatar');
+            if (avatarUrl) {
+                kidAvatarEl.innerHTML = `<img src="${avatarUrl}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">`;
+            } else {
+                kidAvatarEl.textContent = '👦';
+            }
+            
             document.getElementById('kidName').textContent = kidName;
             document.getElementById('analysisDate').textContent = formatDate(analysis.created_at);
             
