@@ -899,6 +899,207 @@
         
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         
+        // Sistema de Internacionalización
+        const translations = {
+            es: {
+                // Meta tags
+                metaTitle: 'SapiSabe - Análisis Educativo',
+                metaDescription: 'Descubre lo que SapiSabe encontró en esta imagen. Análisis educativo inteligente para niños de 3-8 años.',
+                ogTitle: '¡Mira este descubrimiento en SapiSabe!',
+                ogDescription: 'Análisis educativo interactivo para niños curiosos',
+                // UI Elements
+                loadingText: 'Preparando la magia...',
+                heroBadge: 'Análisis Educativo',
+                heroTitle: 'Descubrimiento Mágico',
+                heroDescription: 'Explora lo que SapiSabe encontró en esta imagen',
+                shareButton: 'Compartir',
+                ctaTitle: '¿Quieres más descubrimientos?',
+                ctaDescription: 'Descarga SapiSabe y transforma cada foto en una aventura educativa para tu pequeño explorador',
+                // Features
+                feature1Title: 'Personalizado por Edad',
+                feature1Description: 'Respuestas adaptadas para niños de 3-8 años',
+                feature2Title: 'Audio Narrado',
+                feature2Description: 'Todas las respuestas pueden ser escuchadas',
+                feature3Title: 'Multi-idioma',
+                feature3Description: 'Disponible en español, inglés y francés',
+                feature4Title: 'Perfiles Familiares',
+                feature4Description: 'Múltiples niños en una sola cuenta',
+                // Error messages
+                errorTitle: '¡Ups! Algo salió mal',
+                errorDescription: 'No pudimos encontrar este análisis. Puede que haya sido eliminado o el enlace no sea válido.',
+                errorBackButton: 'Volver al Inicio',
+                // Share messages
+                shareTitle: 'SapiSabe - Análisis Educativo',
+                shareText: '¡Mira este descubrimiento increíble en SapiSabe!',
+                shareCopied: '¡Enlace copiado al portapapeles!',
+                // Analysis default
+                defaultExplorerName: 'Explorador',
+                analysisDescriptionDefault: 'Análisis educativo interactivo para niños curiosos',
+                discoveryText: 'descubrió:'
+            },
+            en: {
+                // Meta tags
+                metaTitle: 'SapiSabe - Educational Analysis',
+                metaDescription: 'Discover what SapiSabe found in this image. Smart educational analysis for children aged 3-8.',
+                ogTitle: 'Look at this discovery on SapiSabe!',
+                ogDescription: 'Interactive educational analysis for curious children',
+                // UI Elements
+                loadingText: 'Preparing the magic...',
+                heroBadge: 'Educational Analysis',
+                heroTitle: 'Magic Discovery',
+                heroDescription: 'Explore what SapiSabe found in this image',
+                shareButton: 'Share',
+                ctaTitle: 'Want more discoveries?',
+                ctaDescription: 'Download SapiSabe and transform every photo into an educational adventure for your little explorer',
+                // Features
+                feature1Title: 'Age Personalized',
+                feature1Description: 'Responses adapted for children aged 3-8',
+                feature2Title: 'Narrated Audio',
+                feature2Description: 'All responses can be listened to',
+                feature3Title: 'Multi-language',
+                feature3Description: 'Available in Spanish, English, and French',
+                feature4Title: 'Family Profiles',
+                feature4Description: 'Multiple children in one account',
+                // Error messages
+                errorTitle: 'Oops! Something went wrong',
+                errorDescription: 'We couldn\'t find this analysis. It may have been deleted or the link is not valid.',
+                errorBackButton: 'Back to Home',
+                // Share messages
+                shareTitle: 'SapiSabe - Educational Analysis',
+                shareText: 'Look at this amazing discovery on SapiSabe!',
+                shareCopied: 'Link copied to clipboard!',
+                // Analysis default
+                defaultExplorerName: 'Explorer',
+                analysisDescriptionDefault: 'Interactive educational analysis for curious children',
+                discoveryText: 'discovered:'
+            },
+            fr: {
+                // Meta tags
+                metaTitle: 'SapiSabe - Analyse Éducative',
+                metaDescription: 'Découvrez ce que SapiSabe a trouvé dans cette image. Analyse éducative intelligente pour les enfants de 3-8 ans.',
+                ogTitle: 'Regardez cette découverte sur SapiSabe!',
+                ogDescription: 'Analyse éducative interactive pour les enfants curieux',
+                // UI Elements
+                loadingText: 'Préparation de la magie...',
+                heroBadge: 'Analyse Éducative',
+                heroTitle: 'Découverte Magique',
+                heroDescription: 'Explorez ce que SapiSabe a trouvé dans cette image',
+                shareButton: 'Partager',
+                ctaTitle: 'Vous voulez plus de découvertes?',
+                ctaDescription: 'Téléchargez SapiSabe et transformez chaque photo en aventure éducative pour votre petit explorateur',
+                // Features
+                feature1Title: 'Personnalisé par Âge',
+                feature1Description: 'Réponses adaptées aux enfants de 3-8 ans',
+                feature2Title: 'Audio Narré',
+                feature2Description: 'Toutes les réponses peuvent être écoutées',
+                feature3Title: 'Multi-langue',
+                feature3Description: 'Disponible en espagnol, anglais et français',
+                feature4Title: 'Profils Familiaux',
+                feature4Description: 'Plusieurs enfants dans un seul compte',
+                // Error messages
+                errorTitle: 'Oups! Quelque chose s\'est mal passé',
+                errorDescription: 'Nous n\'avons pas pu trouver cette analyse. Elle a peut-être été supprimée ou le lien n\'est pas valide.',
+                errorBackButton: 'Retour à l\'Accueil',
+                // Share messages
+                shareTitle: 'SapiSabe - Analyse Éducative',
+                shareText: 'Regardez cette découverte incroyable sur SapiSabe!',
+                shareCopied: 'Lien copié dans le presse-papiers!',
+                // Analysis default
+                defaultExplorerName: 'Explorateur',
+                analysisDescriptionDefault: 'Analyse éducative interactive pour les enfants curieux',
+                discoveryText: 'a découvert:'
+            }
+        };
+        
+        // Variables globales para idioma
+        let currentLanguage = 'es';
+        let t = translations.es;
+        
+        // Función para detectar el idioma de la URL
+        function detectLanguage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            
+            if (langParam && translations[langParam]) {
+                currentLanguage = langParam;
+                t = translations[langParam];
+                
+                // Actualizar el atributo lang del HTML
+                document.documentElement.setAttribute('lang', langParam);
+                
+                return langParam;
+            }
+            
+            return 'es'; // idioma por defecto
+        }
+        
+        // Función para aplicar las traducciones al DOM
+        function applyTranslations() {
+            // Actualizar meta tags
+            document.title = t.metaTitle;
+            document.querySelector('meta[name="description"]').setAttribute('content', t.metaDescription);
+            document.querySelector('meta[property="og:title"]').setAttribute('content', t.ogTitle);
+            document.querySelector('meta[property="og:description"]').setAttribute('content', t.ogDescription);
+            document.querySelector('meta[name="twitter:title"]').setAttribute('content', t.ogTitle);
+            document.querySelector('meta[name="twitter:description"]').setAttribute('content', t.ogDescription);
+            
+            // Actualizar elementos de la UI
+            document.querySelector('.loading-text').textContent = t.loadingText;
+            document.querySelector('.hero-badge span').textContent = t.heroBadge;
+            document.querySelector('.hero-title').textContent = t.heroTitle;
+            document.querySelector('.hero-description').textContent = t.heroDescription;
+            
+            // Actualizar botón de compartir
+            const shareButtons = document.querySelectorAll('.share-button');
+            shareButtons.forEach(btn => {
+                btn.innerHTML = `<i class="fas fa-share-alt"></i> ${t.shareButton}`;
+            });
+            
+            // Actualizar CTA
+            document.querySelector('.cta-title').textContent = t.ctaTitle;
+            document.querySelector('.cta-description').textContent = t.ctaDescription;
+            
+            // Actualizar features
+            const featureCards = document.querySelectorAll('.feature-card');
+            if (featureCards.length >= 4) {
+                featureCards[0].querySelector('h4').textContent = t.feature1Title;
+                featureCards[0].querySelector('p').textContent = t.feature1Description;
+                featureCards[1].querySelector('h4').textContent = t.feature2Title;
+                featureCards[1].querySelector('p').textContent = t.feature2Description;
+                featureCards[2].querySelector('h4').textContent = t.feature3Title;
+                featureCards[2].querySelector('p').textContent = t.feature3Description;
+                featureCards[3].querySelector('h4').textContent = t.feature4Title;
+                featureCards[3].querySelector('p').textContent = t.feature4Description;
+            }
+            
+            // Actualizar mensajes de error
+            document.querySelector('.error-title').textContent = t.errorTitle;
+            document.querySelector('.error-description').textContent = t.errorDescription;
+            const errorBackButton = document.querySelector('.error-container .download-btn');
+            if (errorBackButton) {
+                errorBackButton.innerHTML = `<i class="fas fa-home"></i> ${t.errorBackButton}`;
+            }
+        }
+        
+        // Función para actualizar meta tags dinámicamente con idioma
+        function updateMetaTagsWithLanguage(analysis) {
+            const imageUrl = analysis.image_url || analysis.local_image_uri || '';
+            const description = analysis.brief_description || t.analysisDescriptionDefault;
+            const kidName = analysis.kid_profiles?.name || t.defaultExplorerName;
+            
+            // Actualizar Open Graph tags
+            document.querySelector('meta[property="og:image"]').content = imageUrl;
+            document.querySelector('meta[property="og:url"]').content = window.location.href;
+            document.querySelector('meta[property="og:description"]').content = `${kidName} ${t.discoveryText} ${description}`;
+            
+            // Actualizar Twitter Card tags
+            document.querySelector('meta[name="twitter:image"]').content = imageUrl;
+            document.querySelector('meta[name="twitter:description"]').content = `${kidName} ${t.discoveryText} ${description}`;
+            
+            // Actualizar título de la página
+            document.title = `SapiSabe - ${description.substring(0, 50)}...`;
+        }
+        
         // Crear partículas animadas
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
@@ -960,7 +1161,7 @@
             return formattedHTML || `<div class="analysis-section"><p>${text.replace(/\n/g, '<br>')}</p></div>`;
         }
         
-        // Función para formatear la fecha
+        // Función para formatear la fecha según el idioma
         function formatDate(dateString) {
             const date = new Date(dateString);
             const options = { 
@@ -970,21 +1171,29 @@
                 hour: '2-digit',
                 minute: '2-digit'
             };
-            return date.toLocaleDateString('es-ES', options);
+            
+            // Mapear idiomas a códigos de locale
+            const localeMap = {
+                'es': 'es-ES',
+                'en': 'en-US',
+                'fr': 'fr-FR'
+            };
+            
+            return date.toLocaleDateString(localeMap[currentLanguage] || 'es-ES', options);
         }
         
         // Función para compartir
         function shareAnalysis() {
             if (navigator.share) {
                 navigator.share({
-                    title: 'SapiSabe - Análisis Educativo',
-                    text: '¡Mira este descubrimiento increíble en SapiSabe!',
+                    title: t.shareTitle,
+                    text: t.shareText,
                     url: window.location.href
                 }).catch(err => console.log('Error al compartir:', err));
             } else {
                 // Copiar al portapapeles
                 navigator.clipboard.writeText(window.location.href).then(() => {
-                    alert('¡Enlace copiado al portapapeles!');
+                    alert(t.shareCopied);
                 });
             }
         }
@@ -1020,7 +1229,7 @@
                 }
                 
                 // Actualizar meta tags para el preview
-                updateMetaTags(analysis);
+                updateMetaTagsWithLanguage(analysis);
                 
                 // Mostrar el análisis
                 displayAnalysis(analysis);
@@ -1031,24 +1240,6 @@
             }
         }
         
-        // Función para actualizar meta tags dinámicamente
-        function updateMetaTags(analysis) {
-            const imageUrl = analysis.image_url || analysis.local_image_uri || '';
-            const description = analysis.brief_description || 'Análisis educativo interactivo para niños curiosos';
-            const kidName = analysis.kid_profiles?.name || 'un pequeño explorador';
-            
-            // Actualizar Open Graph tags
-            document.querySelector('meta[property="og:image"]').content = imageUrl;
-            document.querySelector('meta[property="og:url"]').content = window.location.href;
-            document.querySelector('meta[property="og:description"]').content = `${kidName} descubrió: ${description}`;
-            
-            // Actualizar Twitter Card tags
-            document.querySelector('meta[name="twitter:image"]').content = imageUrl;
-            document.querySelector('meta[name="twitter:description"]').content = `${kidName} descubrió: ${description}`;
-            
-            // Actualizar título de la página
-            document.title = `SapiSabe - ${description.substring(0, 50)}...`;
-        }
         
         // Función para mostrar el análisis
         function displayAnalysis(analysis) {
@@ -1066,7 +1257,7 @@
             }
             
             // Configurar información del niño
-            const kidName = analysis.kid_profiles?.name || 'Explorador';
+            const kidName = analysis.kid_profiles?.name || t.defaultExplorerName;
             const avatarUrl = analysis.kid_profiles?.avatar_url;
             
             // Si hay URL de avatar, usar imagen, si no usar emoji
@@ -1093,6 +1284,10 @@
         
         // Inicializar cuando el DOM esté listo
         document.addEventListener('DOMContentLoaded', () => {
+            // Detectar y aplicar idioma
+            detectLanguage();
+            applyTranslations();
+            
             createParticles();
             loadAnalysis();
         });
