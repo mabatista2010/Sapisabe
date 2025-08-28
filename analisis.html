@@ -1117,20 +1117,32 @@
             const particleCount = 30;
             
             for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = Math.random() * 4 + 2;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.bottom = '-20px';  // Posicionar inicialmente debajo de la pantalla
-                particle.style.animationDelay = `${Math.random() * 15}s`;
-                particle.style.animationDuration = `${15 + Math.random() * 10}s`;
-                
-                particlesContainer.appendChild(particle);
+                setTimeout(() => {
+                    createParticle();
+                }, i * 500);
             }
         }
+        
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            const size = Math.random() * 4 + 1;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.getElementById('particles').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 20000);
+        }
+        
+        // Crear partículas periódicamente
+        setInterval(createParticle, 2000);
         
         // Función para obtener parámetros de la URL
         function getUrlParameter(name) {
